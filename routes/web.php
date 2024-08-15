@@ -8,6 +8,7 @@ use App\Http\Controllers\KategoriberitaController;
 use App\Http\Controllers\ManajemenuserController;
 use App\Http\Controllers\PlaylistvideoController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SekilasinfoController;
 use App\Http\Controllers\TagberitaController;
 use App\Http\Controllers\TagvideoController;
 use App\Http\Controllers\VideoController;
@@ -47,4 +48,5 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
     Route::resource('video', VideoController::class);
     Route::resource('tagvideo', TagvideoController::class);
     Route::resource('manajemenuser', ManajemenuserController::class);
+    Route::resource('sekilasinfo', SekilasinfoController::class);
 });

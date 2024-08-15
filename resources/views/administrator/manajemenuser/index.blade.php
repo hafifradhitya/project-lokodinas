@@ -33,7 +33,7 @@
                             <th>Foto</th>
                             <th>Blokir</th>
                             <th>Level</th>
-                            <th>Action</th>
+                            <th class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -57,18 +57,18 @@
                             </td>
                             <td>{{ $user->blokir }}</td>
                             <td>{{ $user->level }}</td>
-                            <td>
-                                <a href="{{ route('administrator.manajemenuser.edit', $user->id) }}" class="btn btn-success btn-sm">
-                                  <span class="glyphicon glyphicon-edit"></span> Edit
+                            <td class="text-center">
+                                <a href="{{ route('administrator.manajemenuser.edit', $user->id) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+                                    <i class="fa fa-edit"></i>
                                 </a>
-                                <form action="{{ route('administrator.manajemenuser.destroy', $user->id) }}" method="POST" style="display: inline-block;">
-                                  @csrf
-                                  @method('DELETE')
-                                  <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin hapus {{ $user->username }}?')">
-                                    <span class='glyphicon glyphicon-remove'></span> Hapus
-                                  </button>
+                                <form action="{{ route('administrator.manajemenuser.destroy', $user->id) }}" method="POST" class="d-inline-block">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;" onclick="return confirm('Yakin hapus {{ $user->username }}?')">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
                                 </form>
-                              </td>
+                            </td>
                         </tr>
                         @php
                             $no++;

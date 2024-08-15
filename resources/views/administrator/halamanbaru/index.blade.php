@@ -40,17 +40,17 @@
                 <td>{{ $page->judul }}</td>
                 <td><a href="{{ url('halaman/detail/' . $page->judul_seo) }}">halaman/detail/{{ $page->judul_seo }}</a></td>
                 <td>{{ \Carbon\Carbon::parse($page->tgl_posting)->format('d M Y') }}</td>
-                <td>
-                  <a href="{{ route('administrator.halamanbaru.edit', $page->id_halaman) }}" class="btn btn-success btn-sm">
-                    <span class="glyphicon glyphicon-edit"></span> Edit
-                  </a>
-                  <form action="{{ route('administrator.halamanbaru.destroy', $page->id_halaman) }}" method="POST" style="display: inline-block;">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin hapus {{ $page->judul }}?')">
-                      <span class='glyphicon glyphicon-remove'></span> Hapus
-                    </button>
-                  </form>
+                <td class="text-center">
+                    <a href="{{ route('administrator.halamanbaru.edit', $page->id_halaman) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+                      <i class="fa fa-edit"></i>
+                    </a>
+                    <form action="{{ route('administrator.halamanbaru.destroy', $page->id_halaman) }}" method="POST" class="d-inline-block">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" class="btn btn-danger btn-sm d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;" onclick="return confirm('Yakin hapus {{ $page->judul }}?')">
+                        <i class="fa fa-trash"></i>
+                      </button>
+                    </form>
                 </td>
               </tr>
               @endforeach

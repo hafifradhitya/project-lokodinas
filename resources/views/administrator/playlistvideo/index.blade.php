@@ -48,14 +48,14 @@
                             <td>{{ $playvid->jdl_playlist }}</td>
                             <td>{{ $playvid->aktif }}</td>
                             <td class="text-center">
-                                <a href="{{ route('administrator.playlistvideo.edit', $playvid->id_playlist) }}" class="btn btn-success btn-sm">
-                                    <span class="glyphicon glyphicon-edit"></span> Edit
+                                <a href="{{ route('administrator.playlistvideo.edit', $playvid->id_playlist) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+                                    <i class="fa fa-edit"></i>
                                 </a>
-                                <form action="{{ route('administrator.playlistvideo.destroy', $playvid->id_playlist) }}" method="POST" style="display: inline-block;">
+                                <form action="{{ route('administrator.playlistvideo.destroy', $playvid->id_playlist) }}" method="POST" class="d-inline-block">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin hapus {{ $playvid->jdl_playlist }}?')">
-                                      <span class='glyphicon glyphicon-remove'></span> Hapus
+                                    <button type="submit" class="btn btn-danger btn-sm d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;" onclick="return confirm('Yakin hapus {{ $playvid->jdl_playlist }}?')">
+                                        <i class="fa fa-trash"></i>
                                     </button>
                                 </form>
                             </td>

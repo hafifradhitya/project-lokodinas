@@ -32,7 +32,7 @@
                   <th>Judul Berita</th>
                   <th>Tanggal</th>
                   <th>Status</th>
-                  <th>#</th>
+                  <th class="text-center">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -43,16 +43,16 @@
                         <td>{{ $news->judul }}</td>
                         <td>{{ \Carbon\Carbon::parse($news->tanggal)->format('d M Y') }}</td>
                         <td>{{ $news->aktif == 'Y' ? 'Aktif' : 'Tidak Aktif' }}</td>
-                        <td>
-                            <a href="{{ route('administrator.berita.edit', $news->id_berita) }}" class="btn btn-success btn-sm">
-                              Edit
+                        <td class="text-center">
+                            <a href="{{ route('administrator.berita.edit', $news->id_berita) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+                              <i class="fa fa-edit"></i>
                             </a>
-                            <form action="{{ route('administrator.berita.destroy', $news->id_berita) }}" method="POST" style="display: inline-block;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin hapus {{ $news->judul }}?')">
-                                  Hapus
-                                </button>
+                            <form action="{{ route('administrator.halamanbaru.destroy', $news->id_berita) }}" method="POST" class="d-inline-block">
+                              @csrf
+                              @method('DELETE')
+                              <button type="submit" class="btn btn-danger btn-sm d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;" onclick="return confirm('Yakin hapus {{ $news->judul }}?')">
+                                <i class="fa fa-trash"></i>
+                              </button>
                             </form>
                         </td>
                     </tr>

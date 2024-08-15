@@ -18,7 +18,7 @@
                     <a href="{{ route('administrator.kategoriberita.create') }}" class="btn btn-primary btn-sm">Tambahkan Data</a>
                 </div>
             </div>
-            
+
             <!-- Tambahkan form pencarian -->
             <div class="card-body">
                 <form action="{{ route('administrator.kategoriberita.index') }}" method="GET" class="mb-1">
@@ -40,7 +40,7 @@
                             <th>Link</th>
                             <th>Posisi</th>
                             <th>Aktif</th>
-                            <th>#</th>
+                            <th class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -52,22 +52,16 @@
                             <td>{{ $kat->sidebar }}</td>
                             <td>{{ $kat->aktif }}</td>
                             <td class="text-center">
-                                <div class="btn-group-vertical">
-                                    <a href="{{ route('administrator.kategoriberita.edit', $kat->id_kategori) }}" 
-                                       class="btn btn-success btn-sm mb-1">
-                                        Edit
-                                    </a>
-                                    <form action="{{ route('administrator.kategoriberita.destroy', $kat->id_kategori) }}" 
-                                          method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" 
-                                                onclick="return confirm('Yakin hapus {{ $kat->nama_kategori }}?')" 
-                                                class="btn btn-danger btn-sm">
-                                            Hapus
-                                        </button>
-                                    </form>
-                                </div>
+                                <a href="{{ route('administrator.kategoriberita.edit', $kat->id_kategori) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                                <form action="{{ route('administrator.kategoriberita.destroy', $kat->id_kategori) }}" method="POST" class="d-inline-block">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;" onclick="return confirm('Yakin hapus {{ $kat->nama_kategori }}?')">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach
