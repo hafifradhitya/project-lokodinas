@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Playlistvideo;
+use App\Models\Tag;
+use App\Models\Tagvideo;
 use App\Models\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -22,7 +24,7 @@ class VideoController extends Controller
         //
         $search = $request->search;
         if(!empty($search)) {
-            $videos = Video::latest()
+            $videos = Video::with('playlist')
             ->where('jdl_video', 'like', "%$search%")
             ->paginate(10);
         } else {
@@ -39,8 +41,9 @@ class VideoController extends Controller
     {
         //
         $playlistvideos = Playlistvideo::all();
+        $tags = Tagvideo::orderBy('nama_tag', 'desc')->get();
 
-        return view('administrator.video.create', compact(['playlistvideo']));
+        return view('administrator.video.create', compact(['playlistvideos', 'tags']));
     }
 
     /**

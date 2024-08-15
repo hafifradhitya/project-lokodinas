@@ -121,7 +121,7 @@ class BeritaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id_berita):RedirectResponse
+    public function update(Request $request, string $id_berita)
     {
         //
         $validated = $request->validate([

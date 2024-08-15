@@ -41,7 +41,7 @@
                       <td>{{ $index + $videos->firstItem() }}</td>
                       <td>{{ $vid->jdl_video }}</td>
                       <td>{{ \Carbon\Carbon::parse($vid->tanggal)->format('d M Y') }}</td>
-                      <td>{{ $vid->playlist->nama_playlist ?? 'Tidak ada playlist' }}</td>
+                      <td>{{ $vid->playlist->jdl_playlist ?? 'Tidak ada playlist' }}</td>
                       <td>
                           <a href="{{ route('administrator.video.edit', $vid->id_video) }}" class="btn btn-success btn-sm">
                             Edit
