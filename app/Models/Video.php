@@ -14,7 +14,12 @@ class Video extends Model
     protected $table = 'video';
     protected $fillable = ['jdl_video', 'video_seo', 'username', 'keterangan', 'tanggal', 'jam', 'hari', 'gbr_video', 'youtube', 'tagvid', 'tanggal'];
 
+    public function scopeLatest($query)
+    {
+        return $query->orderBy('tanggal', 'desc');
+    }
+
     public function playlist(){
-        return $this->belongsTo(Playlistvideo::class,"id_playlist","id");
+        return $this->belongsTo(Playlistvideo::class,"id_playlist");
     }
 }

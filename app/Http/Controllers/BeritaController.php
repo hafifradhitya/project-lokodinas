@@ -43,7 +43,7 @@ class BeritaController extends Controller
         $kategori = Kategori::all();
 
         $tags = Tag::all();
-        return view('administrator.berita.create', compact('kategori', 'tags'));
+        return view('administrator.berita.create', compact(['kategori', 'tags']));
     }
 
     /**
@@ -179,17 +179,17 @@ class BeritaController extends Controller
      */
     public function destroy(string $id_berita):RedirectResponse
     {
-        //  
+        //
         $berita = Berita::findOrFail($id_berita);
-        
+
         // Hapus gambar terkait jika ada
         if ($berita->gambar && file_exists("./foto_berita/" . $berita->gambar)) {
             unlink("./foto_berita/" . $berita->gambar);
         }
-        
+
         // Hapus relasi dengan tags
         $berita->tags()->detach();
-        
+
         $berita->delete();
 
         session()->flash("pesan", "Berita berhasil Dihapus");

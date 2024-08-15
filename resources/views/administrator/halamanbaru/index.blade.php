@@ -1,7 +1,7 @@
-@extends('administrator.dashboard')
+@extends('administrator.layout')
 
 @section('content')
-  
+
 <div class="row">
     <div class="col">
       <div class="card">

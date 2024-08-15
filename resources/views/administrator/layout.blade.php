@@ -104,7 +104,7 @@
                                             class="nav-link">Playlist Video</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ url('administrator/modul-video/video') }}"
+                                        <a href="{{ url('administrator/video') }}"
                                             class="nav-link">Video</a>
                                     </li>
                                     <li class="nav-item">
@@ -169,7 +169,7 @@
                             <div class="collapse" id="modul-interaksi">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a href="{{ url('administrator/modul-interaksi/agenda') }}"
+                                        <a href="{{ url('administrator/agenda') }}"
                                             class="nav-link">Agenda</a>
                                     </li>
                                     <li class="nav-item">
@@ -204,7 +204,7 @@
                             <div class="collapse" id="modul-users">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a href="{{ url('administrator/modul-users/manajemenuser') }}"
+                                        <a href="{{ url('administrator/manajemenuser') }}"
                                             class="nav-link">Manajemen User</a>
                                     </li>
                                     <li class="nav-item">

@@ -5,10 +5,12 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HalamanbaruController;
 use App\Http\Controllers\IdentitaswebsiteController;
 use App\Http\Controllers\KategoriberitaController;
+use App\Http\Controllers\ManajemenuserController;
 use App\Http\Controllers\PlaylistvideoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TagberitaController;
 use App\Http\Controllers\TagvideoController;
+use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -42,5 +44,7 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
     Route::resource('kategoriberita', KategoriberitaController::class);
     Route::resource('tagberita', TagberitaController::class);
     Route::resource('playlistvideo', PlaylistvideoController::class);
+    Route::resource('video', VideoController::class);
     Route::resource('tagvideo', TagvideoController::class);
+    Route::resource('manajemenuser', ManajemenuserController::class);
 });

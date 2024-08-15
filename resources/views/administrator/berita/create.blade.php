@@ -32,11 +32,13 @@
                         <th style="padding: 5px;">Kategori</th>
                         <td style="padding: 5px;">
                             <select class="form-control" id="id_kategori" name="id_kategori" required>
+                                <option value="">-- Pilih Kategori --
                                 @foreach($kategori as $kat)
                                 <option value="{{ $kat->id_kategori }}">
                                     {{ $kat->nama_kategori }}
                                 </option>
                                 @endforeach
+                                </option>
                             </select>
                         </td>
                     </tr>

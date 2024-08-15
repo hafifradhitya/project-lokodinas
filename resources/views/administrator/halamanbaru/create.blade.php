@@ -1,10 +1,9 @@
 @extends('administrator.layout')
-  
+
 @section('content')
-<div class="container-fluid mt--6">
-  <div class="row">
+<div class="row">
     <div class="col">
-      <div class="card">
+      <div class="card card-shadow">
         <div class="card-header">
           <h3 class="mb-0">Tambah Halaman Baru</h3>
         </div>
@@ -42,7 +41,6 @@
       </div>
     </div>
   </div>
-</div>
 @endsection
 
 @push('scripts')
