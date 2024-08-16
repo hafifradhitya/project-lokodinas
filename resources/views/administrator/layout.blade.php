@@ -123,7 +123,7 @@
                             <div class="collapse" id="modul-banner">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a href="{{ url('administrator/modul-banner/bannerslider') }}"
+                                        <a href="{{ url('administrator/bannerslider') }}"
                                             class="nav-link">Banner Slider</a>
                                     </li>
                                     <li class="nav-item">
@@ -131,7 +131,7 @@
                                             class="nav-link">Banner Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ url('administrator/modul-banner/iklansidebar') }}"
+                                        <a href="{{ url('administrator/iklansidebar') }}"
                                             class="nav-link">Iklan Sidebar</a>
                                     </li>
                                 </ul>
@@ -146,15 +146,15 @@
                             <div class="collapse" id="modul-web">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a href="{{ url('administrator/modul-web/logowebsite') }}"
+                                        <a href="{{ url('administrator/logowebsite') }}"
                                             class="nav-link">Logo Website</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ url('administrator/modul-web/templatewebsite') }}"
+                                        <a href="{{ url('administrator/templatewebsite') }}"
                                             class="nav-link">Template Website</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ url('administrator/modul-web/backgroundwebsite') }}"
+                                        <a href="{{ url('administrator/backgroundwebsite') }}"
                                             class="nav-link">Background Website</a>
                                     </li>
                                 </ul>
@@ -185,11 +185,11 @@
                                             class="nav-link">Download Area</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ url('administrator/modul-interaksi/alamatkontak') }}"
+                                        <a href="{{ url('administrator/alamatkontak') }}"
                                             class="nav-link">Alamat Kontak</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ url('administrator/modul-interaksi/pesanmasuk') }}"
+                                        <a href="{{ url('administrator/pesanmasuk') }}"
                                             class="nav-link">Pesan Masuk</a>
                                     </li>
                                 </ul>
@@ -208,7 +208,7 @@
                                             class="nav-link">Manajemen User</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ url('administrator/modul-users/manajemenmodul') }}"
+                                        <a href="{{ url('administrator/manajemenmodul') }}"
                                             class="nav-link">Manajemen Modul</a>
                                     </li>
                                 </ul>
@@ -554,6 +554,9 @@
     </script>
   <script>
     CKEDITOR.replace('deskripsi');
+  </script>
+  <script>
+    CKEDITOR.replace('alamat');
   </script>
   <script>
     $(function() {

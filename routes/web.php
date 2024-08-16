@@ -1,12 +1,19 @@
 <?php
 
+use App\Http\Controllers\AgendaController;
+use App\Http\Controllers\AlamatkontakController;
+use App\Http\Controllers\BannerhomeController;
+use App\Http\Controllers\BannersliderController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DownloadareaController;
 use App\Http\Controllers\HalamanbaruController;
 use App\Http\Controllers\IdentitaswebsiteController;
+use App\Http\Controllers\IklansidebarController;
 use App\Http\Controllers\JejakpendapatController;
 use App\Http\Controllers\KategoriberitaController;
+use App\Http\Controllers\LogowebsiteController;
+use App\Http\Controllers\ManajemenmodulController;
 use App\Http\Controllers\ManajemenuserController;
 use App\Http\Controllers\MenuwebsiteController;
 use App\Http\Controllers\PlaylistvideoController;
@@ -51,9 +58,17 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
     Route::resource('video', VideoController::class);
     Route::resource('tagvideo', TagvideoController::class);
     Route::resource('manajemenuser', ManajemenuserController::class);
+    Route::resource('manajemenmodul', ManajemenmodulController::class);
     Route::resource('sekilasinfo', SekilasinfoController::class);
 
     Route::resource('jejakpendapat', JejakpendapatController::class);
     Route::resource('downloadarea', DownloadareaController::class);
     Route::resource('menuwebsite', MenuwebsiteController::class);
+    Route::resource('bannerslider', BannersliderController::class);
+    Route::resource('bannerhome', BannerhomeController::class);
+    Route::resource('iklansidebar', IklansidebarController::class);
+
+    Route::resource('agenda', AgendaController::class);
+    Route::resource('alamatkontak', AlamatkontakController::class);
+    Route::resource('logowebsite', LogowebsiteController::class);
 });

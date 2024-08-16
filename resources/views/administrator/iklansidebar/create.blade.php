@@ -6,10 +6,10 @@
     <div class="col">
         <div class="card card-shadow">
             <div class="card-header">
-                <h3 class="mb-0">Tambah Banner Slider Baru</h3>
+                <h3 class="mb-0">Tambah Iklan Sidebar Baru</h3>
             </div>
             <div class="card-body">
-                <form action="{{ route('administrator.bannerslider.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('administrator.iklansidebar.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <table class="table" id="datatable-buttons" style="border: none; border-collapse: collapse;">
                         <tbody>
@@ -20,9 +20,9 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th style="padding: 5px;">Deskripsi</th>
+                                <th style="padding: 5px;">URL</th>
                                 <td style="padding: 5px;">
-                                    <textarea class="form-control" id="isi_deskripsi" name="deskripsi" placeholder="Masukkan Deskripsi"></textarea>
+                                    <input type="url" class="form-control" id="url" name="url" placeholder="Masukkan URL" required>
                                 </td>
                             </tr>
                             <tr>
@@ -35,7 +35,7 @@
                     </table>
                     <div class="mt-4 d-flex justify-content-between">
                         <button type="submit" class="btn btn-primary">Simpan</button>
-                        <a href="{{ route('administrator.bannerslider.index') }}" class="btn btn-danger">Batal</a>
+                        <a href="{{ route('administrator.iklansidebar.index') }}" class="btn btn-danger">Batal</a>
                     </div>
                 </form>
             </div>
@@ -43,9 +43,3 @@
     </div>
 </div>
 @endsection
-
-@push('script')
-<script>
-    CKEDITOR.replace('isi_deskripsi');
-</script>
-@endpush
