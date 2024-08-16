@@ -46,17 +46,25 @@
                         <th style="padding: 5px;">Headline</th>
                         <td style="padding: 5px;">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="headline" id="headline" value="1">
-                                <label class="form-check-label" for="headline">Ya</label>
+                                <input class="form-check-input" type="radio" name="headline" id="headline_ya" value="1">
+                                <label class="form-check-label" for="headline_ya">Ya</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="headline" id="headline_tidak" value="0" checked>
+                                <label class="form-check-label" for="headline_tidak">Tidak</label>
                             </div>
                         </td>
                     </tr>
                     <tr>
-                        <th style="padding: 5px;">Aktif</th>
+                        <th style="padding: 5px;">Pilihan</th>
                         <td style="padding: 5px;">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="aktif" id="aktif" value="Y" checked>
-                                <label class="form-check-label" for="aktif">Ya</label>
+                                <input class="form-check-input" type="radio" name="aktif" id="aktif_ya" value="Y">
+                                <label class="form-check-label" for="aktif_ya">Ya</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="aktif" id="aktif_tidak" value="N" checked>
+                                <label class="form-check-label" for="aktif_tidak">Tidak</label>
                             </div>
                         </td>
                     </tr>
@@ -64,8 +72,12 @@
                         <th style="padding: 5px;">Berita Utama</th>
                         <td style="padding: 5px;">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="utama" id="utama" value="1">
-                                <label class="form-check-label" for="utama">Ya</label>
+                                <input class="form-check-input" type="radio" name="utama" id="utama_ya" value="1">
+                                <label class="form-check-label" for="utama_ya">Ya</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="utama" id="utama_tidak" value="0" checked>
+                                <label class="form-check-label" for="utama_tidak">Tidak</label>
                             </div>
                         </td>
                     </tr>

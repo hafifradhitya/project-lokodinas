@@ -58,12 +58,12 @@
                             <th style="padding: 5px;">Pilihan</th>
                             <td style="padding: 5px;">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="pilihan" id="pilihan_y" value="Y" {{ $berita->aktif == 'Y' ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="pilihan_y">Ya</label>
+                                    <input class="form-check-input" type="radio" name="aktif" id="aktif" value="Y" {{ $berita->aktif == 'Y' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="aktif_y">Ya</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="pilihan" id="pilihan_n" value="N" {{ $berita->aktif == 'N' ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="pilihan_n">Tidak</label>
+                                    <input class="form-check-input" type="radio" name="aktif" id="aktif" value="N" {{ $berita->aktif == 'N' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="aktif_n">Tidak</label>
                                 </div>
                             </td>
                         </tr>
@@ -71,12 +71,12 @@
                             <th style="padding: 5px;">Berita Utama</th>
                             <td style="padding: 5px;">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="berita_utama" id="berita_utama_y" value="Y" {{ $berita->utama == 'Y' ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="berita_utama_y">Ya</label>
+                                    <input class="form-check-input" type="radio" name="utama" id="utama" value="Y" {{ $berita->utama == 'Y' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="utama_y">Ya</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="berita_utama" id="berita_utama_n" value="N" {{ $berita->utama == 'N' ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="berita_utama_n">Tidak</label>
+                                    <input class="form-check-input" type="radio" name="utama" id="utama" value="N" {{ $berita->utama == 'N' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="utama_n">Tidak</label>
                                 </div>
                             </td>
                         </tr>
@@ -120,7 +120,7 @@
                                 @foreach($tags as $tag)
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="{{ $tag->id_tag }}" id="tag{{ $tag->id_tag }}" name="tags[]"
-                                        {{ $berita->tag && $berita->tag->id_tag == $tag->id_tag ? 'checked' : '' }}>
+                                        {{ $berita->tags && in_array($tag->id_tag, $berita->tags->pluck('id_tag')->toArray()) ? 'checked' : '' }}>
                                     <label class="form-check-label" for="tag{{ $tag->id_tag }}">
                                         {{ $tag->nama_tag }}
                                     </label>
@@ -129,7 +129,7 @@
                             </div>
                         </td>
                     </tr>
-                    <tr>
+                    {{-- <tr>
                         <th style="padding: 5px;">GIMANA</th>
                         <td style="padding: 5px; border: 1px solid #ddd;">
                             <div style="max-height: 200px; overflow-y: auto;">
@@ -141,9 +141,13 @@
                                 </div>
                             </div>
                         </td>
-                    </tr>
+                    </tr> --}}
                     </tbody>
                 </table>
+                <div class="mt-4 d-flex justify-content-between">
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <a href="{{ route('administrator.berita.index') }}" class="btn btn-danger">Cancel</a>
+                </div>
             </form>
         </div>
     </div>

@@ -31,7 +31,7 @@
                             <th>No</th>
                             <th>Nama Tag</th>
                             <th>Link</th>
-                            <th>#</th>
+                            <th class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,22 +41,16 @@
                             <td>{{ $tagv->nama_tag }}</td>
                             <td><a href="#">video/tag/{{ $tagv->tag_seo }}</a></td>
                             <td class="text-center">
-                                <div class="btn-group-vertical">
-                                    <a href="{{ route('administrator.tagvideo.edit', $tagv->id_tag) }}"
-                                       class="btn btn-success btn-sm mb-1">
-                                        Edit
-                                    </a>
-                                    <form action="{{ route('administrator.tagvideo.destroy', $tagv->id_tag) }}"
-                                          method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit"
-                                                onclick="return confirm('Yakin hapus {{ $tagv->nama_tag }}?')"
-                                                class="btn btn-danger btn-sm">
-                                            Hapus
-                                        </button>
-                                    </form>
-                                </div>
+                                <a href="{{ route('administrator.tagvideo.edit', $tagv->id_tag) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                                <form action="{{ route('administrator.tagvideo.destroy', $tagv->id_tag) }}" method="POST" class="d-inline-block">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;" onclick="return confirm('Yakin hapus {{ $tagv->nama_tag }}?')">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach

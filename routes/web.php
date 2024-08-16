@@ -2,10 +2,13 @@
 
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DownloadareaController;
 use App\Http\Controllers\HalamanbaruController;
 use App\Http\Controllers\IdentitaswebsiteController;
+use App\Http\Controllers\JejakpendapatController;
 use App\Http\Controllers\KategoriberitaController;
 use App\Http\Controllers\ManajemenuserController;
+use App\Http\Controllers\MenuwebsiteController;
 use App\Http\Controllers\PlaylistvideoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SekilasinfoController;
@@ -49,4 +52,8 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
     Route::resource('tagvideo', TagvideoController::class);
     Route::resource('manajemenuser', ManajemenuserController::class);
     Route::resource('sekilasinfo', SekilasinfoController::class);
+
+    Route::resource('jejakpendapat', JejakpendapatController::class);
+    Route::resource('downloadarea', DownloadareaController::class);
+    Route::resource('menuwebsite', MenuwebsiteController::class);
 });

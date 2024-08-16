@@ -1,7 +1,6 @@
-@extends('administrator.dashboard')
+@extends('administrator.layout')
 
 @section('content')
-<div class="container-fluid mt--6">
     <!-- Table -->
     <div class="row">
       <div class="col">
@@ -47,7 +46,7 @@
                             <a href="{{ route('administrator.berita.edit', $news->id_berita) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
                               <i class="fa fa-edit"></i>
                             </a>
-                            <form action="{{ route('administrator.halamanbaru.destroy', $news->id_berita) }}" method="POST" class="d-inline-block">
+                            <form action="{{ route('administrator.berita.destroy', $news->id_berita) }}" method="POST" class="d-inline-block">
                               @csrf
                               @method('DELETE')
                               <button type="submit" class="btn btn-danger btn-sm d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;" onclick="return confirm('Yakin hapus {{ $news->judul }}?')">
@@ -65,5 +64,4 @@
         </div>
       </div>
     </div>
-</div>
 @endsection

@@ -31,29 +31,29 @@
                 <th>Judul Video</th>
                 <th>Tanggal Video</th>
                 <th>Playlist</th>
-                <th>Action</th>
+                <th class="text-center">Action</th>
               </tr>
             </thead>
             <tbody>
               @foreach ($videos as $index => $vid)
                   <tr>
                       {{-- <td>{{ $no }}</td> --}}
-                      <td>{{ $index + $videos->firstItem() }}</td>
-                      <td>{{ $vid->jdl_video }}</td>
-                      <td>{{ \Carbon\Carbon::parse($vid->tanggal)->format('d M Y') }}</td>
-                      <td>{{ $vid->playlist->jdl_playlist ?? 'Tidak ada playlist' }}</td>
-                      <td>
-                          <a href="{{ route('administrator.video.edit', $vid->id_video) }}" class="btn btn-success btn-sm">
-                            Edit
-                          </a>
-                          <form action="{{ route('administrator.video.destroy', $vid->id_video) }}" method="POST" style="display: inline-block;">
-                              @csrf
-                              @method('DELETE')
-                              <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin hapus {{ $vid->jdl_video }}?')">
-                                Hapus
-                              </button>
-                          </form>
-                      </td>
+                        <td>{{ $index + $videos->firstItem() }}</td>
+                        <td>{{ $vid->jdl_video }}</td>
+                        <td>{{ \Carbon\Carbon::parse($vid->tanggal)->format('d M Y') }}</td>
+                        <td>{{ $vid->playlist->jdl_playlist ?? 'Tidak ada playlist' }}</td>
+                        <td class="text-center">
+                            <a href="{{ route('administrator.video.edit', $vid->id_video) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <form action="{{ route('administrator.video.destroy', $vid->id_video) }}" method="POST" class="d-inline-block">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;" onclick="return confirm('Yakin hapus {{ $vid->jdl_video }}?')">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </form>
+                        </td>
                   </tr>
               @endforeach
             </tbody>

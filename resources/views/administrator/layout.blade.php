@@ -58,7 +58,7 @@
                                             class="nav-link">Identitas Website</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ url('administrator/menu-utama/menuwebsite') }}"
+                                        <a href="{{ url('administrator/menuwebsite') }}"
                                             class="nav-link">Menu Website</a>
                                     </li>
                                     <li class="nav-item">
@@ -173,15 +173,15 @@
                                             class="nav-link">Agenda</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ url('administrator/modul-interaksi/sekilasinfo') }}"
+                                        <a href="{{ url('administrator/sekilasinfo') }}"
                                             class="nav-link">Sekilas Info</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ url('administrator/modul-interaksi/jejakpendapat') }}"
+                                        <a href="{{ url('administrator/jejakpendapat') }}"
                                             class="nav-link">Jejak Pendapat</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ url('administrator/modul-interaksi/downloadarea') }}"
+                                        <a href="{{ url('administrator/downloadarea') }}"
                                             class="nav-link">Download Area</a>
                                     </li>
                                     <li class="nav-item">
