@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agenda;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class AgendaController extends Controller
@@ -9,17 +11,30 @@ class AgendaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request):View
     {
         //
+        $search = $request->search;
+        if (!empty($search)) {
+            $agendas = Agenda::latest()
+                ->where('id_agenda', 'like', "%$search%")
+                ->orWhere('tema', 'like', "%$search%")
+                ->paginate(10);
+        } else {
+            $agendas = Agenda::orderBy('id_agenda', 'desc')->paginate(10);
+        }
+
+        return view('administrator.agenda.index', compact('agendas'));
     }
+    
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create():View
     {
         //
+        return view('administrator.agenda.create');
     }
 
     /**

@@ -18,15 +18,15 @@ class SekilasinfoController extends Controller
         //
         $search = $request->search;
         if (!empty($search)) {
-            $info = Sekilasinfo::latest()
+            $infos = Sekilasinfo::latest()
                 ->where('id_sekilas', 'like', "%$search%")
                 ->orWhere('info', 'like', "%$search%")
                 ->paginate(10);
         } else {
-            $info = Sekilasinfo::orderBy('id_sekilas', 'desc')->paginate(10);
+            $infos = Sekilasinfo::orderBy('id_sekilas', 'desc')->paginate(10);
         }
 
-        return view('administrator.sekilasinfo.index', compact('info'));
+        return view('administrator.sekilasinfo.index', compact('infos'));
     }
 
     /**
@@ -46,14 +46,14 @@ class SekilasinfoController extends Controller
         //
         $validated = $request->validate([
             'info' => 'required|string',
-            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
         $info = $request->info;
         $gambarName = null;
 
-        if ($request->hasFile('gambar')) {
-            $gambar = $request->file("gambar");
+        if ($request->hasFile('foto')) {
+            $gambar = $request->file("foto");
             $gambarName = $info . "_" . Str::random(25) . "." . $gambar->getClientOriginalExtension();
             $gambar->move("./foto_info/", $gambarName);
         }
@@ -83,8 +83,8 @@ class SekilasinfoController extends Controller
     public function edit(Request $request, string $id_sekilas):View
     {
         //
-        $info = Sekilasinfo::where('id_sekilas', $id_sekilas)->firstOrFail();
-        return view('administrator.berita.edit', compact('info'));
+        $infot = Sekilasinfo::where('id_sekilas', $id_sekilas)->firstOrFail();
+        return view('administrator.sekilasinfo.edit', compact('infot'));
     }
 
     /**
@@ -138,6 +138,6 @@ class SekilasinfoController extends Controller
         $info->delete();
 
         session()->flash("pesan", "info berhasil Dihapus");
-        return redirect()->route('administrator.info.index')->with(['success' => 'info berhasil Dihapus']);
+        return redirect()->route('administrator.sekilasinfo.index')->with(['success' => 'info berhasil Dihapus']);
     }
 }

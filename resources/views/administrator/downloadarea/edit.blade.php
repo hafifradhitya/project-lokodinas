@@ -19,7 +19,7 @@
                         <div class="form-group">
                             <label for="file">Ganti File</label>
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="file" name="file">
+                                <input type="file" class="custom-file-input" id="file" name="file" required onchange="updateFileName(this)">
                                 <label class="custom-file-label" for="file">Pilih file</label>
                             </div>
                             <small class="form-text text-muted">File saat ini: {{ $download->nama_file }}</small>

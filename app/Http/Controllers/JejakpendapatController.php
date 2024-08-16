@@ -16,15 +16,15 @@ class JejakpendapatController extends Controller
         //
         $search = $request->search;
         if (!empty($search)) {
-            $poling = Poling::latest()
+            $polings = Poling::latest()
                 ->where('id_poling', 'like', "%$search%")
                 ->orWhere('pilihan', 'like', "%$search%")
                 ->paginate(10);
         } else {
-            $poling = Poling::orderBy('id_poling', 'desc')->paginate(10);
+            $polings = Poling::orderBy('id_poling', 'desc')->paginate(10);
         }
 
-        return view('administrator.jejakpendapat.index', compact('poling'));
+        return view('administrator.jejakpendapat.index', compact('polings'));
     }
 
     /**
@@ -76,8 +76,8 @@ class JejakpendapatController extends Controller
     public function edit(string $id_poling):View
     {
         //
-        $poling = Poling::where('id_poling', $id_poling)->firstOrFail();
-        return view('administrator.jejakpendapat.edit', compact('poling'));
+        $poll = Poling::where('id_poling', $id_poling)->firstOrFail();
+        return view('administrator.jejakpendapat.edit', compact('poll'));
     }
 
     /**

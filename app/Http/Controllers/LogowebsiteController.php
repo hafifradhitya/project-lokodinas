@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Logo;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class LogowebsiteController extends Controller
@@ -9,9 +11,11 @@ class LogowebsiteController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index():View
     {
         //
+        $logo = Logo::first();
+        return view('administrator.logowebsite.index', compact('logo'));
     }
 
     /**

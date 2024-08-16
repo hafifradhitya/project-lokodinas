@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alamatkontak;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class AlamatkontakController extends Controller
@@ -9,9 +11,11 @@ class AlamatkontakController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index():View
     {
         //
+        $alamatKontak = Alamatkontak::first();
+        return view('administrator.alamatkontak.index', compact('alamatKontak'));
     }
 
     /**
@@ -49,9 +53,21 @@ class AlamatkontakController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id_alamat)
     {
         //
+        $validated = $request->validate([
+            'alamat' => 'required|string',
+        ]);
+
+        $alamatKontak = Alamatkontak::findOrFail($id_alamat);
+
+        $alamatKontak->update([
+            "alamat" => $validated['alamat'],
+        ]);
+
+        session()->flash("pesan", "Alamat kontak berhasil diubah");
+        return redirect()->route('administrator.alamatkontak.index')->with(['success' => 'Alamat kontak berhasil diubah']);
     }
 
     /**

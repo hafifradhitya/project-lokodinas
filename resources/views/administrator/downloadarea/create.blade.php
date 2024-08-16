@@ -15,12 +15,12 @@
             <div class="form-group">
                 <label for="file">Cari File</label>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="file" name="nama_file" required onchange="updateFileName(this)">
+                    <input type="file" class="custom-file-input" id="nama_file" name="nama_file" required onchange="updateFileName(this)">
                     <label class="custom-file-label" for="file" id="fileLabel">Pilih file</label>
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">Tambahkan</button>
-            <a href="{{ url('administrator/modul-interaksi/downloadarea') }}" class="btn btn-secondary">Cancel</a>
+            <a href="" class="btn btn-secondary">Cancel</a>
         </form>
     </div>
 </div>
