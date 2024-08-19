@@ -32,33 +32,36 @@
             </div>
 
             <div class="form-group">
-                <label for="tgl_selesai">Tgl s/d Selesai</label>
-                <div class="input-group">
-                    <input type="text" class="form-control daterange" name="datefilter" id="datefilter">
-                    <div class="input-group-append">
-                        <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
-                    </div>
-                </div>
+                <label for="date_range">Rentang Tanggal</label>
+                <input type="text" class="form-control" id="date_range" name="date_range" placeholder="Pilih Rentang Tanggal">
             </div>
+
+
             <div class="form-group">
                 <label for="pengirim">Pengirim</label>
                 <input type="text" class="form-control" id="pengirim" name="pengirim">
             </div>
+
             <button type="submit" class="btn btn-primary">Tambahkan</button>
         </form>
     </div>
-</div>
-<script>
-    $(function() {
-        $('input[name=datefilter]').daterangepicker({
-            opens: 'left'
-        })
-    }, function(start, end, label) {
-        pickstart = start.format('YYYY - MM - DD');
-        pickend = end.format('YYYY - MM - DD');
 
-        $('#startdate').val(pickstart);
-        $('#enddate').val(pickend);
+</div>
+
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        flatpickr("#date_range", {
+            mode: "range",
+            dateFormat: "Y-m-d",
+            locale: {
+                firstDayOfWeek: 1 // Start the week on Monday
+            }
+        });
     });
-</script>
+    </script>
+
+
+
+
+
 @endsection

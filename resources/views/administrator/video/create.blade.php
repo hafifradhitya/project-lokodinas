@@ -57,7 +57,7 @@
                                     <div style="max-height: 200px; overflow-y: auto;">
                                         @foreach($tagvids as $tagvid)
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="{{ $tagvid->id_tag }}" id="tagvid" name="tagvid[]">
+                                                <input class="form-check-input" type="checkbox" value="{{ $tagvid->tag_seo }}" id="tagvid" name="tagvid[]">
                                                 <label class="form-check-label" for="tagvid">
                                                     {{ $tagvid->nama_tag }}
                                                 </label>

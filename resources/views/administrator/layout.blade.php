@@ -11,6 +11,14 @@
   <link rel="stylesheet" href="{{ url('assets/vendor/nucleo/css/nucleo.css') }}" type="text/css">
   <link rel="stylesheet" href="{{ url('assets/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}" type="text/css">
   <link rel="stylesheet" href="{{ url('assets/css/argon.css') }}" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+  <!-- Flatpickr CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+<!-- Flatpickr JS -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
 
 </head>
 
@@ -426,7 +434,7 @@
                                             src="{{ asset('assets/img/theme/team-4.jpg') }}">
                                     </span>
                                     <div class="media-body ml-2 d-none d-lg-block">
-                                        <span class="mb-0 text-sm  font-weight-bold">John Snow</span>
+                                        <span class="mb-0 text-sm  font-weight-bold">{{ Auth::user()->username }}</span>
                                     </div>
                                 </div>
                             </a>
@@ -558,7 +566,10 @@
   <script>
     CKEDITOR.replace('alamat');
   </script>
-  <script>
+
+
+
+  {{-- <script>
     $(function() {
       $('input[name="datefilter"]').daterangepicker({
         autoUpdateInput: false,
@@ -577,7 +588,7 @@
         $(this).val('');
       });
     });
-  </script>
+  </script> --}}
 </body>
 
 </html>

@@ -23,10 +23,9 @@
                             <tr>
                                 <th style="padding: 5px;">Playlist</th>
                                 <td style="padding: 5px;">
-                                    <select class="form-control" id="id_playlist" name="id_playlist" required>
-                                        <option value="">-- Pilih Playlist --</option>
+                                    <select class="form-control" id="id_playlist" name="id_playlist">
                                         @foreach($playlistvideos as $playvid)
-                                        <option value="{{ $playvid->id_kategori }}" {{ $playvid->id_kategori == $videos->id_playlist ? 'selected' : '' }}>
+                                        <option value="{{ $playvid->id_playlist }}" {{ $videos->id_playlist == $playvid->id_playlist ? 'selected' : '' }}>
                                             {{ $playvid->jdl_playlist }}
                                         </option>
                                         @endforeach
@@ -40,12 +39,22 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th style="padding: 5px;">Gambar</th>
+                                {{-- <th style="padding: 5px;">Gambar</th>
                                 <td style="padding: 5px;">
                                     <input type="file" class="form-control" id="gbr_video" name="gbr_video">
                                     @if($videos->gbr_video)
                                         <img src="{{ asset('storage/' . $videos->gbr_video) }}" alt="Current Image" class="img-thumbnail mt-2" style="max-width: 150px;">
                                     @endif
+                                </td> --}}
+                                <th style="padding: 5px;">Gambar saat ini:</th>
+                                <td style="padding: 5px;">
+                                    <div class="d-flex align-items-center">
+                                        <img id="preview" src="{{ url('foto_video/'.$videos->gbr_video) }}" alt="Preview" style="max-width: 100px; margin-top: 5px;" class="mr-3">
+                                        <div class="flex-grow-1">
+                                            <input type="file" class="form-control" onchange="previewImage(event)" name="gbr_video" id="gbr_video">
+                                            <small class="form-text text-muted">Biarkan kosong jika tidak ingin mengubah gambar.</small>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
@@ -88,6 +97,23 @@
         </div>
     </div>
 </div>
+
+<script>
+    function previewImage(event) {
+        var preview = document.getElementById('preview');
+        var file = event.target.files[0];
+        var reader = new FileReader();
+
+        reader.onload = function(){
+            preview.src = reader.result;
+        }
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    }
+</script>
+
 @endsection
 
 @push('script')

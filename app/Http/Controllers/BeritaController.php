@@ -137,6 +137,7 @@ class BeritaController extends Controller
     public function update(Request $request, string $id_berita)
     {
         //
+        dd($request);
         $validated = $request->validate([
             'judul' => 'required|string|max:255',
             'sub_judul' => 'nullable|string|max:255',
