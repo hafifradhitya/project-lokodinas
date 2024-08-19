@@ -46,11 +46,11 @@
                         <th style="padding: 5px;">Headline</th>
                         <td style="padding: 5px;">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="headline" id="headline_ya" value="1">
+                                <input class="form-check-input" type="radio" name="headline" id="headline_ya" value="Y">
                                 <label class="form-check-label" for="headline_ya">Ya</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="headline" id="headline_tidak" value="0" checked>
+                                <input class="form-check-input" type="radio" name="headline" id="headline_tidak" value="N" checked>
                                 <label class="form-check-label" for="headline_tidak">Tidak</label>
                             </div>
                         </td>
@@ -72,11 +72,11 @@
                         <th style="padding: 5px;">Berita Utama</th>
                         <td style="padding: 5px;">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="utama" id="utama_ya" value="1">
+                                <input class="form-check-input" type="radio" name="utama" id="utama_ya" value="Y">
                                 <label class="form-check-label" for="utama_ya">Ya</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="utama" id="utama_tidak" value="0" checked>
+                                <input class="form-check-input" type="radio" name="utama" id="utama_tidak" value="N" checked>
                                 <label class="form-check-label" for="utama_tidak">Tidak</label>
                             </div>
                         </td>
@@ -87,10 +87,16 @@
                             <textarea class="form-control" id="isi_berita" name="isi_berita" rows="5" placeholder="Masukkan isi berita" required></textarea>
                         </td>
                     </tr>
-                    <tr>
+                    <tr>   
                         <th style="padding: 5px;">Gambar</th>
                         <td style="padding: 5px;">
                             <input type="file" class="form-control" id="gambar" name="gambar">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="padding: 5px;">Ket. Gambar</th>
+                        <td style="padding: 5px;">
+                            <input type="text" class="form-control" id="keterangan_gambar" name="keterangan_gambar" placeholder="Masukkan Keterangan">
                         </td>
                     </tr>
                     <tr>
@@ -99,8 +105,8 @@
                             <div style="max-height: 200px; overflow-y: auto;">
                                 @foreach($tags as $tag)
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="{{ $tag->id_tag }}" id="tag{{ $tag->id_tag }}" name="tags[]">
-                                        <label class="form-check-label" for="tag{{ $tag->id_tag }}">
+                                        <input class="form-check-input" type="checkbox" value="{{ $tag->tag_seo }}" id="tag" name="tag[]">
+                                        <label class="form-check-label" for="tag">
                                             {{ $tag->nama_tag }}
                                         </label>
                                     </div>

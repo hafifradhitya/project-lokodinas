@@ -7,7 +7,7 @@
         word-wrap: break-word;
         white-space: normal;
     }
-</style>
+</style>  
 
 <div class="row">
     <div class="col">

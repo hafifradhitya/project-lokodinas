@@ -41,9 +41,9 @@ class VideoController extends Controller
     {
         //
         $playlistvideos = Playlistvideo::all();
-        $tags = Tagvideo::orderBy('nama_tag', 'desc')->get();
+        $tagvids = Tagvideo::orderBy('nama_tag', 'desc')->get();
 
-        return view('administrator.video.create', compact(['playlistvideos', 'tags']));
+        return view('administrator.video.create', compact(['playlistvideos', 'tagvids']));
     }
 
     /**
@@ -52,32 +52,48 @@ class VideoController extends Controller
     public function store(Request $request):RedirectResponse
     {
         //
+        // dd($request);
         $validated = $request->validate([
             'jdl_video' => 'required|string|max:255',
+            'id_playlist' => 'required|exists:playlist,id_playlist', // Tambahkan validasi untuk kategori
             'keterangan' => 'required|string|max:255',
             'gbr_video' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'youtube' => 'required|url|max:255',
+            'youtube' => 'required|url|max:255'
         ]);
 
         $jdl_video = $request->jdl_video;
-        $tag = $request->tag;
         $gambarName = null;
+
+        $username = $request->username ?: 'admin';
 
         if($request->hasFIle('gbr_video')) {
             $gbr_video = $request->file("gbr_video");
             $gambarName = $jdl_video.".".Str::random(25).".".$gbr_video->getClientOriginalExtension();
         }
 
+        if ($request->tagvid !=''){
+            $tag_seo = $request->tagvid;
+            $tagvid=implode(',',$tag_seo);
+        }else{
+            $tagvid = '';
+        }
+
         Video::create([
             "jdl_video" => $jdl_video,
             "video_seo" => Str::slug($validated['jdl_video']),
+            "id_playlist" => $validated['id_playlist'],
             "gbr_video" => $gambarName,
             "keterangan" => $validated['keterangan'],
             "youtube" => $validated['youtube'],
-            "tag" => $tag
+            "video" => '',
+            "tagvid" => $tagvid,
+            "username" => $username,
+            "tanggal" => now(),
+            "jam" => now(),
+            "hari" => now()->format('l'),
         ]);
 
-         session()->flash("pesan", "Data berhasil Ditambah");
+        session()->flash("pesan", "Data berhasil Ditambah");
         return redirect()->route('administrator.video.index')->with(['succes'=>'Data berhasil Ditambah']);
     }
 
@@ -97,7 +113,8 @@ class VideoController extends Controller
         //
         $videos = Video::findOrFail($id_video);
         $playlistvideos = Playlistvideo::all();
-        return view('administrator.video.edit', compact(['videos', 'playlistvideos']));
+        $tagvids = Tagvideo::all();
+        return view('administrator.video.edit', compact(['videos', 'playlistvideos', 'tagvids']));
     }
 
     /**
@@ -116,8 +133,16 @@ class VideoController extends Controller
         $videos = Video::findOrFail($id_video);
 
         $jdl_video = $request->jdl_video;
-        $tag = $request->tag;
         $gambarName = null;
+
+        $username = $request->username ?: 'admin';
+
+        if ($request->tagvid !=''){
+            $tag_seo = $request->tagvid;
+            $tagvid=implode(',',$tag_seo);
+        }else{
+            $tagvid = '';
+        }
 
         if($request->hasFIle('gbr_video')) {
             $gbr_video = $request->file("gbr_video");
@@ -128,9 +153,10 @@ class VideoController extends Controller
             "jdl_video" => $jdl_video,
             "video_seo" => Str::slug($validated['jdl_video']),
             "gbr_video" => $gambarName,
-            "tag" => $tag,
+            "tagvid" => $tagvid,
             "youtube" => $validated['youtube'],
-            "keterangan" => $validated['keterangan']
+            "keterangan" => $validated['keterangan'],
+            "username" => $username,
         ]);
 
         session()->flash("pesan", "Data berhasil Diperbarui");

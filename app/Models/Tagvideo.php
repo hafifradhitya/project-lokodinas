@@ -13,4 +13,9 @@ class Tagvideo extends Model
     protected $primaryKey = 'id_tag';
     protected $table = 'tagvid';
     protected $fillable = ['nama_tag', 'tag_seo', 'count', 'username'];
+
+    public function video()
+    {
+        return $this->hasMany(Video::class, 'id_tag', 'id_tag');
+    }
 }

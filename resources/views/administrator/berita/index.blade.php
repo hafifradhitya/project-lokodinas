@@ -34,15 +34,24 @@
                   <th class="text-center">Action</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody>     
                 @foreach ($berita as $index => $news)
                     <tr>
                         {{-- <td>{{ $no }}</td> --}}
                         <td>{{ $index + $berita->firstItem() }}</td>
                         <td>{{ $news->judul }}</td>
                         <td>{{ \Carbon\Carbon::parse($news->tanggal)->format('d M Y') }}</td>
-                        <td>{{ $news->aktif == 'Y' ? 'Aktif' : 'Tidak Aktif' }}</td>
+                        <td>
+                            @if ($news->status === 'Y')
+                            <span style="color:green">Published</span>
+                            @else
+                            <span style="color:red">Unpublished</span>
+                            @endif
+                        </td>
                         <td class="text-center">
+                            <a href="{{ route('administrator.berita.publish', $news->id_berita) }}" class="btn btn-info btn-sm d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+                                <i class="fa fa-check"></i>
+                            </a>
                             <a href="{{ route('administrator.berita.edit', $news->id_berita) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
                               <i class="fa fa-edit"></i>
                             </a>

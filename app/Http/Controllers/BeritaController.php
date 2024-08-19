@@ -51,18 +51,13 @@ class BeritaController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+
         $validated = $request->validate([
             'judul' => 'required|string|max:255',
             'sub_judul' => 'nullable|string|max:255',
-            'youtube' => 'nullable|url|max:255',
-            'headline' => 'nullable|boolean',
-            'aktif' => 'nullable|boolean',
-            'utama' => 'nullable|boolean',
-            'id_kategori' => 'required|exists:kategori,id_kategori',
-            'tags' => 'nullable|array',
-            'tags.*' => 'exists:tags,id_tag',
-            'isi_berita' => 'required',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'id_kategori' => 'required|exists:kategori,id_kategori', // Tambahkan validasi untuk kategori
+            'isi_berita' => 'required', // Tambahkan validasi untuk isi berita
         ]);
 
         $judul = $request->judul;
@@ -73,8 +68,16 @@ class BeritaController extends Controller
             $gambarName = $judul."_".Str::random(25).".".$gambar->getClientOriginalExtension();
             $gambar->move("./foto_berita/", $gambarName);
         }
+        $keterangan_gambar = $request->keterangan_gambar;
 
         $username = $request->username ?: 'admin';
+
+        if ($request->tag !=''){
+            $tag_seo = $request->tag;
+            $tag=implode(',',$tag_seo);
+        }else{
+            $tag = '';
+        }
 
         Berita::create([
             "judul" => $judul,
@@ -84,14 +87,24 @@ class BeritaController extends Controller
             "headline" => $request->headline ?? 0,
             "aktif" => $request->aktif ?? 'Y',
             "utama" => $request->utama ?? 0,
-            "id_kategori" => $request->id_kategori,
+            "id_kategori" => $validated['id_kategori'],
             "isi_berita" => $request->isi_berita,
-            "tgl_posting" => now(),
+            "tanggal" => now(),
+            "tag" => $tag,
             "jam" => now(),
             "hari" => now()->format('l'),
             "username" => $username,
-            "gambar" => $gambarName
+            "gambar" => $gambarName,
+            "keterangan_gambar" => $keterangan_gambar
         ]);
+
+
+
+        // if ($request->has('tags')) {
+        //     $berita->tags()->attach($request->tag);
+        // }
+
+
 
         session()->flash("pesan", "Berita berhasil Ditambah");
         return redirect()->route('administrator.berita.index')->with(['success'=>'Berita berhasil Ditambah']);
@@ -128,12 +141,10 @@ class BeritaController extends Controller
             'judul' => 'required|string|max:255',
             'sub_judul' => 'nullable|string|max:255',
             'youtube' => 'nullable|url|max:255',
-            'headline' => 'nullable|boolean',
-            'aktif' => 'nullable|boolean',
-            'utama' => 'nullable|boolean',
+            'headline' => 'required|in:Y,N',
+            'aktif' => 'required|in:Y,N',
+            'utama' => 'required|in:Y,N',
             'id_kategori' => 'required|exists:kategori,id_kategori',
-            'tags' => 'nullable|array',
-            'tags.*' => 'exists:tags,id_tag',
             'isi_berita' => 'required',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
@@ -142,6 +153,13 @@ class BeritaController extends Controller
 
         $judul = $request->judul;
         $username = $request->username ?: 'admin';
+
+        if ($request->tag !=''){
+            $tag_seo = $request->tag;
+            $tag=implode(',',$tag_seo);
+        }else{
+            $tag = '';
+        }
 
         if ($request->hasFile('gambar')) {
             $gambar = $request->file("gambar");
@@ -155,20 +173,17 @@ class BeritaController extends Controller
             "sub_judul" => $request->sub_judul,
             "youtube" => $request->youtube,
             "judul_seo" => Str::slug($validated['judul']),
-            "headline" => $request->headline ?? 0,
-            "aktif" => $request->aktif ?? 'Y',
-            "utama" => $request->utama ?? 0,
+            "headline" => $validated['headline'],
+            "aktif" => $validated['aktif'],
+            "utama" => $validated['utama'],
             "id_kategori" => $request->id_kategori,
             "isi_berita" => $request->isi_berita,
+            "tag" => $tag,
             "tgl_posting" => now(),
             "jam" => now(),
             "hari" => now()->format('l'),
             "username" => $username
         ]);
-
-        if ($request->has('tags')) {
-            $berita->tags()->sync($request->tags);
-        }
 
         session()->flash("pesan", "Berita berhasil Diperbarui");
         return redirect()->route('administrator.berita.index')->with(['success' => 'Berita berhasil Diperbarui']);
@@ -181,18 +196,25 @@ class BeritaController extends Controller
     {
         //
         $berita = Berita::findOrFail($id_berita);
-
-        // Hapus gambar terkait jika ada
-        if ($berita->gambar && file_exists("./foto_berita/" . $berita->gambar)) {
-            unlink("./foto_berita/" . $berita->gambar);
-        }
-
-        // Hapus relasi dengan tags
-        $berita->tags()->detach();
-
         $berita->delete();
 
         session()->flash("pesan", "Berita berhasil Dihapus");
         return redirect()->route('administrator.berita.index')->with(['success'=>'Berita berhasil Dihapus']);
     }
+
+    public function publish(string $id_berita): RedirectResponse
+    {
+        // Ambil berita berdasarkan ID
+        $berita = Berita::findOrFail($id_berita);
+
+        // Periksa status saat ini dan toggle status
+        $status = ($berita->status === 'Y') ? 'N' : 'Y';
+
+        // Update status
+        $berita->update(['status' => $status]);
+
+        // Redirect kembali ke halaman list berita
+        return redirect()->route('administrator.berita.index')->with(['success' => 'Status berita berhasil diubah.']);
+    }
+
 }

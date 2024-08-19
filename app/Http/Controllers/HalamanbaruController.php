@@ -46,6 +46,7 @@ class HalamanbaruController extends Controller
     public function store(Request $request):RedirectResponse
     {
         //
+
         $validated = $request->validate([
             'judul' => 'required|string|max:255',
             'isi_halaman' => 'required',

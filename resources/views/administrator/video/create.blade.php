@@ -25,7 +25,7 @@
                                     <select class="form-control" id="id_playlist" name="id_playlist" required>
                                         <option value="">-- Pilih Playlist --
                                         @foreach($playlistvideos as $playvid)
-                                        <option value="{{ $playvid->id_kategori }}">
+                                        <option value="{{ $playvid->id_playlist }}">
                                             {{ $playvid->jdl_playlist }}
                                         </option>
                                         @endforeach
@@ -55,11 +55,11 @@
                                 <th style="padding: 5px;">Tag</th>
                                 <td style="padding: 5px; border: 1px solid #ddd;">
                                     <div style="max-height: 200px; overflow-y: auto;">
-                                        @foreach($tags as $tag)
+                                        @foreach($tagvids as $tagvid)
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="{{ $tag->id_tag }}" id="tag{{ $tag->id_tag }}" name="tags[]">
-                                                <label class="form-check-label" for="tag{{ $tag->id_tag }}">
-                                                    {{ $tag->nama_tag }}
+                                                <input class="form-check-input" type="checkbox" value="{{ $tagvid->id_tag }}" id="tagvid" name="tagvid[]">
+                                                <label class="form-check-label" for="tagvid">
+                                                    {{ $tagvid->nama_tag }}
                                                 </label>
                                             </div>
                                         @endforeach

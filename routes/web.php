@@ -21,6 +21,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SekilasinfoController;
 use App\Http\Controllers\TagberitaController;
 use App\Http\Controllers\TagvideoController;
+use App\Http\Controllers\TestingController;
 use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
 
@@ -52,6 +53,7 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
     Route::get('identitaswebsite', [IdentitaswebsiteController::class, 'edit'])->name('identitaswebsite.edit');
     Route::put('identitaswebsite', [IdentitaswebsiteController::class, 'update'])->name('identitaswebsite.update');
     Route::resource('berita', BeritaController::class);
+    Route::get('berita/publish/{id_berita}', [BeritaController::class, 'publish'])->name('berita.publish');
     Route::resource('kategoriberita', KategoriberitaController::class);
     Route::resource('tagberita', TagberitaController::class);
     Route::resource('playlistvideo', PlaylistvideoController::class);
@@ -72,3 +74,5 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
     Route::resource('alamatkontak', AlamatkontakController::class);
     Route::resource('logowebsite', LogowebsiteController::class);
 });
+
+Route::get('testing', [TestingController::class, 'test']);

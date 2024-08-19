@@ -119,8 +119,7 @@
                                 @endforeach --}}
                                 @foreach($tags as $tag)
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="{{ $tag->id_tag }}" id="tag{{ $tag->id_tag }}" name="tags[]"
-                                        {{ $berita->tags && in_array($tag->id_tag, $berita->tags->pluck('id_tag')->toArray()) ? 'checked' : '' }}>
+                                    <input class="form-check-input" type="checkbox" value="{{ $tag->tag_seo }}" id="tag{{ $tag->id_tag }}" name="tag[]"{{ in_array($tag->tag_seo, explode(',', $berita->tag)) ? ' checked' : ''; }}>
                                     <label class="form-check-label" for="tag{{ $tag->id_tag }}">
                                         {{ $tag->nama_tag }}
                                     </label>
@@ -151,4 +150,21 @@
             </form>
         </div>
     </div>
+
+
+    <script>
+        function previewImage(event) {
+            var preview = document.getElementById('preview');
+            var file = event.target.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function(){
+                preview.src = reader.result;
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
 @endsection
