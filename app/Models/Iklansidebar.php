@@ -10,7 +10,7 @@ class Iklansidebar extends Model
     use HasFactory;
 
     public $timestamps = false;
-    protected $primaryKey = 'id_iklanatas';
-    protected $table = 'iklanatas';
-    protected $fillable = ['id_iklanatas', 'judul', 'username', 'url', 'gambar', 'tgl_posting']; // Kolom yang dapat diisi
+    protected $primaryKey = 'id_pasangiklan';
+    protected $table = 'pasangiklan';
+    protected $fillable = ['judul', 'username', 'url', 'gambar', 'tgl_posting']; // Kolom yang dapat diisi
 }

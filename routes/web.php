@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\AlamatkontakController;
+use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\BannerhomeController;
 use App\Http\Controllers\BannersliderController;
 use App\Http\Controllers\BeritaController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DownloadareaController;
 use App\Http\Controllers\HalamanbaruController;
 use App\Http\Controllers\IdentitaswebsiteController;
+use App\Http\Controllers\IklanatasController;
 use App\Http\Controllers\IklansidebarController;
 use App\Http\Controllers\JejakpendapatController;
 use App\Http\Controllers\KategoriberitaController;
@@ -73,6 +75,8 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
     Route::resource('agenda', AgendaController::class);
     Route::resource('alamatkontak', AlamatkontakController::class);
     Route::resource('logowebsite', LogowebsiteController::class);
+    Route::resource('album', AlbumController::class);
+    Route::resource('iklanatas', IklanatasController::class);
 });
 
 Route::get('testing', [TestingController::class, 'test']);

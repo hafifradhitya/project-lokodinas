@@ -47,172 +47,172 @@
                     <p>Silakan klik menu pilihan yang berada di sebelah kiri untuk mengelola konten website anda atau pilih ikon-ikon pada Control Panel di bawah ini:</p>
                     <div class="row">
                         <div class="col-3 mb-3">
-                            <button class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
+                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark " href="{{ route('administrator.identitaswebsite.edit') }}">
                                 <i class="fa fa-th fa-2x mb-1 mx-auto"></i>
                                 <span class="small">Identitas</span>
-                            </button>
+                            </a>
                         </div>
                         <div class="col-3 mb-3">
-                            <button class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
+                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark" href="{{ url('administrator/menuwebsite') }}">
                                 <i class="fa fa-th-large fa-2x mb-1 mx-auto"></i>
                                 <span class="small">Menu</span>
-                            </button>
+                            </a>
                         </div>
                         <div class="col-3 mb-3">
-                            <button class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
+                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark" href="{{ url('administrator/halamanbaru') }}">
                                 <i class="fa fa-file fa-2x mb-1 mx-auto"></i>
                                 <span class="small">Halaman</span>
-                            </button>
+                            </a>
                         </div>
                         <div class="col-3 mb-3">
-                            <button class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
+                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark" href="{{ url('administrator/berita') }}">
                                 <i class="fa fa-desktop fa-2x mb-1 mx-auto"></i>
                                 <span class="small">Berita</span>
-                            </button>
+                            </a>
                         </div>
                         <div class="col-3 mb-3">
-                            <button class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
+                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark" href="{{ url('administrator/kategoriberita') }}">
                                 <i class="fa fa-bars fa-2x mb-1 mx-auto"></i>
                                 <span class="small">Kategori</span>
-                            </button>
+                            </a>
                         </div>
                         <div class="col-3 mb-3">
-                            <button class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
+                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark" href="{{ url('administrator/tagberita') }}">
                                 <i class="fa fa-tag fa-2x mb-1 mx-auto"></i>
                                 <span class="small">Tag Berita</span>
-                            </button>
+                            </a>
                         </div>
                         <div class="col-3 mb-3">
-                            <button class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
+                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
                                 <i class="fa fa-comments fa-2x mb-1 mx-auto"></i>
                                 <span class="small">Komen. Berita</span>
-                            </button>
+                            </a>
                         </div>
                         <div class="col-3 mb-3">
-                            <button class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
+                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
                                 <i class="fa fa-bell-slash fa-2x mb-1 mx-auto"></i>
                                 <span class="small">Sensor</span>
-                            </button>
+                            </a>
                         </div>
                         <div class="col-3 mb-3">
-                            <button class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
+                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark" href="{{ url('administrator/album') }}">
                                 <i class="fa fa-camera-retro fa-2x mb-1 mx-auto"></i>
                                 <span class="small">Album</span>
-                            </button>
+                            </a>
                         </div>
                         <div class="col-3 mb-3">
-                            <button class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
+                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
                                 <i class="fa fa-camera fa-2x mb-1 mx-auto"></i>
                                 <span class="small">Gallery</span>
-                            </button>
+                            </a>
                         </div>
                         <div class="col-3 mb-3">
-                            <button class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
+                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark" href="{{ url('administrator/playlistvideo') }}">
                                 <i class="fa fa-caret-square-right fa-2x mb-1 mx-auto"></i>
                                 <span class="small">Playlist</span>
-                            </button>
+                            </a>
                         </div>
                         <div class="col-3 mb-3">
-                            <button class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
+                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark" href="{{ url('administrator/video') }}">
                                 <i class="fa fa-play fa-2x mb-1 mx-auto"></i>
                                 <span class="small">Video</span>
-                            </button>
+                            </a>
                         </div>
                         <div class="col-3 mb-3">
-                            <button class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
+                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark" href="{{ url('administrator/tagvideo') }}">
                                 <i class="fa fa-tags fa-2x mb-1 mx-auto"></i>
                                 <span class="small">Tag Video</span>
-                            </button>
+                            </a>
                         </div>
                         <div class="col-3 mb-3">
-                            <button class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
+                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
                                 <i class="fa fa-comments fa-2x mb-1 mx-auto"></i>
                                 <span class="small">Komen. Video</span>
-                            </button>
+                            </a>
                         </div>
                         <div class="col-3 mb-3">
-                            <button class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
+                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark" href="{{ url('administrator/iklanatas') }}">
                                 <i class="fa fa-file-image fa-2x mb-1 mx-auto"></i>
                                 <span class="small">Ads Atas</span>
-                            </button>
+                            </a>
                         </div>
                         <div class="col-3 mb-3">
-                            <button class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
+                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark" href="{{ url('administrator/iklansidebar') }}">
                                 <i class="fa fa-file-image fa-2x mb-1 mx-auto"></i>
                                 <span class="small">Ads Sidebar</span>
-                            </button>
+                            </a>
                         </div>
                         <div class="col-3 mb-3">
-                            <button class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
+                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark" href="{{ url('administrator/bannerhome') }}">
                                 <i class="fa fa-file-image fa-2x mb-1 mx-auto"></i>
                                 <span class="small">Ads Tengah</span>
-                            </button>
+                            </a>
                         </div>
                         <div class="col-3 mb-3">
-                            <button class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
+                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
                                 <i class="fa fa-circle-notch fa-2x mb-1 mx-auto"></i>
                                 <span class="small">Logo</span>
-                            </button>
+                            </a>
                         </div>
                         <div class="col-3 mb-3">
-                            <button class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
+                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
                                 <i class="fa fa-file fa-2x mb-1 mx-auto"></i>
                                 <span class="small">Template</span>
-                            </button>
+                            </a>
                         </div>
                         <div class="col-3 mb-3">
-                            <button class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
+                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
                                 <i class="fa fa-circle fa-2x mb-1 mx-auto"></i>
                                 <span class="small">Background</span>
-                            </button>
+                            </a>
                         </div>
                         <div class="col-3 mb-3">
-                            <button class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
+                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
                                 <i class="fa fa-calendar-minus fa-2x mb-1 mx-auto"></i>
                                 <span class="small">Agenda</span>
-                            </button>
+                            </a>
                         </div>
                         <div class="col-3 mb-3">
-                            <button class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
+                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark" href="{{ url('administrator/sekilasinfo') }}">
                                 <i class="fa fa-calendar-minus fa-2x mb-1 mx-auto"></i>
                                 <span class="small">Sekilas Info</span>
-                            </button>
+                            </a>
                         </div>
                         <div class="col-3 mb-3">
-                            <button class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
+                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark" href="{{ url('administrator/jejakpendapat') }}">
                                 <i class="fa fa-chart-bar fa-2x mb-1 mx-auto"></i>
                                 <span class="small">Polling</span>
-                            </button>
+                            </a>
                         </div>
                         <div class="col-3 mb-3">
-                            <button class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
+                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
                                 <i class="fab fa-yahoo fa-2x mb-1 mx-auto"></i>
                                 <span class="small">YM</span>
-                            </button>
+                            </a>
                         </div>
                         <div class="col-3 mb-3">
-                            <button class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
+                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark" href="{{ url('administrator/downloadarea') }}">
                                 <i class="fa fa-download fa-2x mb-1 mx-auto"></i>
                                 <span class="small">Download</span>
-                            </button>
+                            </a>
                         </div>
                         <div class="col-3 mb-3">
-                            <button class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
+                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark" href="{{ url('administrator/alamatkontak') }}">
                                 <i class="fa fa-bed fa-2x mb-1 mx-auto"></i>
                                 <span class="small">Alamat</span>
-                            </button>
+                            </a>
                         </div>
                         <div class="col-3 mb-3">
-                            <button class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
+                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
                                 <i class="fa fa-envelope fa-2x mb-1 mx-auto"></i>
                                 <span class="small">Pesan</span>
-                            </button>
+                            </a>
                         </div>
                         <div class="col-3 mb-3">
-                            <button class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
+                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
                                 <i class="fa fa-users fa-2x mb-1 mx-auto"></i>
                                 <span class="small">Users</span>
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>

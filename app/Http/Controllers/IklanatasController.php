@@ -2,33 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Iklansidebar;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use Illuminate\View\View;
+use App\Models\Iklanatas;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Pagination\Paginator;
-use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Str; 
+use Illuminate\Http\Request;
 
-class IklansidebarController extends Controller
+class IklanatasController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request):View
+    public function index(Request $request): View
     {
         //
         $search = $request->search;
-        if(!empty($search)) {
-            $iklansidebar = Iklansidebar::latest()
-            ->orWhere('judul', 'like', "%$search%")
-            ->paginate(10);
+        if (!empty($search)) {
+            $iklanatas = Iklanatas::latest()
+                ->orWhere('judul', 'like', "%$search%")
+                ->paginate(10);
         } else {
-            $iklansidebar = Iklansidebar::orderBy('id_pasangiklan', 'desc')->paginate(10);
+            $iklanatas = Iklanatas::orderBy('id_iklanatas', 'desc')->paginate(10);
         }
 
-        return view('administrator.iklansidebar.index', compact(['iklansidebar']));
+        return view('administrator.iklanatas.index', compact(['iklanatas']));
     }
 
     /**
@@ -37,7 +34,7 @@ class IklansidebarController extends Controller
     public function create():View
     {
         //
-        return view('administrator.iklansidebar.create');
+        return view('administrator.iklanatas.create');
     }
 
     /**
@@ -58,11 +55,11 @@ class IklansidebarController extends Controller
 
         if ($request->hasFile('gambar')) {
             $gambar = $request->file("gambar");
-            $gambarName = $judul."_".Str::random(25).".".$gambar->getClientOriginalExtension();
+            $gambarName = $judul . "_" . Str::random(25) . "." . $gambar->getClientOriginalExtension();
             $gambar->move("./foto_iklansidebar/", $gambarName);
         }
 
-        Iklansidebar::create([
+        Iklanatas::create([
             'judul' => $validated['judul'],
             'gambar' => $gambarName,
             'url' => $validated['url'],
@@ -71,7 +68,7 @@ class IklansidebarController extends Controller
         ]);
 
         session()->flash("pesan", "Data berhasil Ditambah");
-        return redirect()->route('administrator.iklansidebar.index')->with('success', 'Banner slider berhasil ditambahkan');
+        return redirect()->route('administrator.iklanatas.index')->with('success', 'Banner slider berhasil ditambahkan');
     }
 
     /**
@@ -85,20 +82,20 @@ class IklansidebarController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id):View
+    public function edit(string $id_iklanatas):View
     {
         //
-        $iklansidebar = Iklansidebar::findOrFail($id);
-        return view('administrator.iklansidebar.edit', compact('iklansidebar'));
+        $iklanatas = Iklanatas::findOrFail($id_iklanatas);
+        return view('administrator.iklanatas.edit', compact('iklanatas'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id):RedirectResponse
+    public function update(Request $request, string $id_iklanatas)
     {
         //
-        $iklansidebar = Iklansidebar::findOrFail($id);
+        $iklanatas = Iklanatas::findOrFail($id_iklanatas);
 
         $judul = $request->judul;
         $url = $request->url;
@@ -111,26 +108,26 @@ class IklansidebarController extends Controller
         if ($request->hasFile('gambar')) {
             $gambar = $request->file("gambar");
             $gambarName = $judul."_".Str::random(25).".".$gambar->getClientOriginalExtension();
-            $gambar->move("./foto_iklansidebar/", $gambarName);
+            $gambar->move("./foto_iklanatas/", $gambarName);
             $updateData['gambar'] = $gambarName;
         }
 
-        $iklansidebar->update($updateData);
+        $iklanatas->update($updateData);
 
         session()->flash("pesan", "Data berhasil Diperbarui");
-        return redirect()->route('administrator.iklansidebar.index')->with('success', 'Banner slider berhasil diperbarui');
+        return redirect()->route('administrator.iklanatas.index')->with('success', 'Banner slider berhasil diperbarui');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id_iklanatas)
     {
         //
-        $iklansidebar = Iklansidebar::findOrFail($id);
-        $iklansidebar->delete();
+        $iklanatas = Iklanatas::findOrFail($id_iklanatas);
+        $iklanatas->delete();
 
         session()->flash("pesan", "Data berhasil Dihapus");
-        return redirect()->route('administrator.iklansidebar.index')->with('success', 'Banner slider berhasil dihapus');
+        return redirect()->route('administrator.iklanatas.index')->with('success', 'Banner slider berhasil dihapus');
     }
 }

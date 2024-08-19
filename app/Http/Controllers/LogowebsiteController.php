@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Logo;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class LogowebsiteController extends Controller
@@ -53,9 +54,25 @@ class LogowebsiteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id_logo)
     {
         //
+        $validated = $request->validate([
+            'cover' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
+
+        $logo = Logo::findOrFail($id_logo);
+
+        if ($request->hasFile('cover')) {
+            $gambar = $request->file("cover");
+            $logoName = "logo".Str::random(25).".".$gambar->getClientOriginalExtension();
+            $gambar->move(public_path('logo'), $logoName);
+            $logo->update(['gambar' => $logoName]);
+        }
+
+        session()->flash("pesan", "Logo berhasil diubah");
+        return redirect()->route('administrator.logowebsite.index')->with(['success' => 'Logo berhasil diubah']);
+    
     }
 
     /**

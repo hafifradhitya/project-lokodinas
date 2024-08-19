@@ -9,7 +9,7 @@
                 <h3 class="mb-0">Edit Iklan Sidebar</h3>
             </div>
             <div class="card-body">
-                <form action="{{ route('administrator.iklansidebar.update', $iklansidebar->id_iklanatas) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('administrator.iklansidebar.update', $iklansidebar->id_pasangiklan) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <table class="table" id="datatable-buttons" style="border: none; border-collapse: collapse;">

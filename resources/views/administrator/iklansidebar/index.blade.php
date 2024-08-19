@@ -45,14 +45,14 @@
                         <tr>
                             <td>{{ $iklansidebar->firstItem() + $index }}</td>
                             <td>{{ $iklan->judul }}</td>
-                            <td>{{ $iklan->url }}</td>
+                            <td><a href="{{ $iklan->url}}">{{ $iklan->url }}</a></td>
                             <td>{{ \Carbon\Carbon::parse($iklan->tgl_posting)->locale('id')->isoFormat('D MMM YYYY') }}</td>
                             <td class="text-center">
                                 <div class="d-flex justify-content-center">
-                                    <a href="{{ route('administrator.iklansidebar.edit', $iklan->id_iklanatas) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
+                                    <a href="{{ route('administrator.iklansidebar.edit', $iklan->id_pasangiklan) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
                                         <i class="fa fa-edit"></i>
                                     </a>
-                                    <form action="{{ route('administrator.iklansidebar.destroy', $iklan->id_iklanatas) }}" method="POST" class="d-inline">
+                                    <form action="{{ route('administrator.iklansidebar.destroy', $iklan->id_pasangiklan) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;" onclick="return confirm('Yakin hapus {{ $iklan->judul }}?')">
