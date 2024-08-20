@@ -566,6 +566,9 @@
   <script>
     CKEDITOR.replace('alamat');
   </script>
+  <script>
+    CKEDITOR.replace('isi_agenda');
+  </script>
 
 
 
