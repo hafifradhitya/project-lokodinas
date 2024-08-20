@@ -89,7 +89,7 @@
                             </a>
                         </div>
                         <div class="col-3 mb-3">
-                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
+                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark" href="{{ url('administrator/sensorkomentar') }}">
                                 <i class="fa fa-bell-slash fa-2x mb-1 mx-auto"></i>
                                 <span class="small">Sensor</span>
                             </a>
@@ -149,7 +149,7 @@
                             </a>
                         </div>
                         <div class="col-3 mb-3">
-                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
+                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark" href="{{ url('administrator/logowebsite') }}">
                                 <i class="fa fa-circle-notch fa-2x mb-1 mx-auto"></i>
                                 <span class="small">Logo</span>
                             </a>
@@ -185,7 +185,7 @@
                             </a>
                         </div>
                         <div class="col-3 mb-3">
-                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
+                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark" href="{{ url('administrator/ym') }}">
                                 <i class="fab fa-yahoo fa-2x mb-1 mx-auto"></i>
                                 <span class="small">YM</span>
                             </a>

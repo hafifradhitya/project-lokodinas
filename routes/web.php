@@ -15,16 +15,19 @@ use App\Http\Controllers\IklansidebarController;
 use App\Http\Controllers\JejakpendapatController;
 use App\Http\Controllers\KategoriberitaController;
 use App\Http\Controllers\LogowebsiteController;
+use App\Http\Controllers\MainController;
 use App\Http\Controllers\ManajemenmodulController;
 use App\Http\Controllers\ManajemenuserController;
 use App\Http\Controllers\MenuwebsiteController;
 use App\Http\Controllers\PlaylistvideoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SekilasinfoController;
+use App\Http\Controllers\SensorkomentarController;
 use App\Http\Controllers\TagberitaController;
 use App\Http\Controllers\TagvideoController;
 use App\Http\Controllers\TestingController;
 use App\Http\Controllers\VideoController;
+use App\Http\Controllers\YmController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -64,19 +67,23 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
     Route::resource('manajemenuser', ManajemenuserController::class);
     Route::resource('manajemenmodul', ManajemenmodulController::class);
     Route::resource('sekilasinfo', SekilasinfoController::class);
-
     Route::resource('jejakpendapat', JejakpendapatController::class);
     Route::resource('downloadarea', DownloadareaController::class);
     Route::resource('menuwebsite', MenuwebsiteController::class);
     Route::resource('bannerslider', BannersliderController::class);
     Route::resource('bannerhome', BannerhomeController::class);
     Route::resource('iklansidebar', IklansidebarController::class);
-
     Route::resource('agenda', AgendaController::class);
     Route::resource('alamatkontak', AlamatkontakController::class);
     Route::resource('logowebsite', LogowebsiteController::class);
     Route::resource('album', AlbumController::class);
     Route::resource('iklanatas', IklanatasController::class);
+    Route::resource('sensorkomentar', SensorkomentarController::class);
+    Route::resource('ym', YmController::class);
+});
+
+Route::prefix('dinas-1')->name('dinas-1.')->group(function () {
+    Route::resource('dashboard',MainController::class );
 });
 
 Route::get('testing', [TestingController::class, 'test']);
