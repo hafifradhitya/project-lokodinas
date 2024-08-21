@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Alamatkontak;
 use App\Models\Identitaswebsite;
+use App\Models\Logo;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -15,7 +16,8 @@ class MainController extends Controller
     {
         $identitas = Identitaswebsite::first(); 
         $alamat = Alamatkontak::first();
-        return view('dinas-1.layout', compact('identitas', 'alamat'));
+        $logo = Logo::orderBy('id_logo', 'DESC')->first();
+        return view('dinas-1.layout', compact('identitas', 'alamat','logo'));
     }
 
     /**

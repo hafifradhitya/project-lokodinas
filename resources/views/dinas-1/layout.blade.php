@@ -36,52 +36,135 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <style>
-    .bg-gray {
-        background-color: #343a40; 
-    }
-</style>
+        .bg-gray {
+            background-color: #343a40;
+        }
+    </style>
 </head>
-
-
-@yield('footer')
-<div class="container-fluid fixed-bottom bg-dark text-white">
-    <div class="row">
-        <div class="col-md-4">
-            <h3 class="mb-sm text-white">LOKASI</h3>
-            <iframe width="100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="{{ $identitas->maps }}"></iframe>
-        </div>
-        <div class="col-md-4">
-            <h3 class="mb-sm text-white">FANSPAGE</h3>
-            <div class="fb-page" data-href="https://www.facebook.com/dppkbkarawang/" data-tabs="timeline" data-width="300" data-height="300" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-                <blockquote cite="https://www.facebook.com/dppkbkarawang/" class="fb-xfbml-parse-ignore">
-                    <a href="https://www.facebook.com/dppkbkarawang/">DPPKB Karawang</a>
-                </blockquote>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <h3 class="mb-sm text-white">Contact Us</h3>
-            <p class="mb-xl text-white text-4xl"><strong>{{ $identitas->no_telp }}</strong></p>
-            <div>
-                {!! $alamat->alamat !!}
-            </div>
-            <ul class="social-icons mt-xl d-flex"> <!-- Tambahkan kelas d-flex untuk membuat ul menjadi horizontal -->
-                <a class="sc-1 mr-4" href="javascript:void(0)"><i class="fab fa-facebook fa-2x"></i></a>
-                <a class="sc-2 mr-4" href="javascript:void(0)"><i class="fab fa-twitter fa-2x"></i></a>
-                <a class="sc-3 mr-4" href="javascript:void(0)"><i class="fab fa-instagram fa-2x"></i></a>
-                <a class="sc-4 mr-4" href="javascript:void(0)"><i class="fab fa-youtube fa-2x"></i></a>
-            </ul>
-        </div>
-    </div>
-    <div class="footer-copyright">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-11">
-                    <p>© {{ date('Y') }} Powered by Lokomedia.web.id.</p>
+<header id="header" class="header-no-border-bottom" data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 190, 'stickySetTop': '-190px', 'stickyChangeLogo': false}">
+    <div class="header-body">
+        <div class="header-container container">
+            <div class="header-row">
+                <div class="header-column">
+                    <div style="text-align: center;">
+                        <img style='width:70px;' src="{{ asset('logo/' . $logo->gambar) }}" />
+                        <h4><b><span style=" color: #fff;">PEMERINTAH KABUPATEN KARAWANG</span></b></h4>
+                        <h4><b><span style=" color: #fff;">DINAS PENGENDALIAN PENDUDUK DAN KELUARGA BERENCANA</span></b></h4>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="header-container header-nav header-nav-center header-nav-bar header-nav-bar-">
+            <button class="btn header-btn-collapse-nav" data-toggle="collapse" data-target=".header-nav-main">
+                <i class="fa fa-bars"></i>
+            </button>
+            <div class="header-nav-main header-nav-main-light header-nav-main-effect-1 header-nav-main-sub-effect-1 fixed-top collapse" style="padding-top:3px;">
+                <nav>
+                    <ul class="nav nav-pills" id="mainNav">
+                        <li class="">
+                            <a href="{{ url('/') }}">
+                                <i class="fa fa-home" style="font-size:25px;"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url('hubungi/') }}">
+                                Hubungi Kami
+                            </a>
+                        </li>
+                        <li class="hidden-xs hidden-sm" style="float:right;padding:10px 13px;">
+                            <form method="POST" action="{{ url('berita/index/') }}">
+                                @csrf
+                                <div class="input-group" style="position:absolute; width:150px; right:50px;">
+                                    <input name="kata" type="text" class="form-control" placeholder="Cari...">
+                                    <span class="input-group-btn">
+                                        <button name="cari" class="btn btn-default" type="submit">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
     </div>
+</header>
+
+<div class="container-fluid">
+    @yiled('content')
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+@yield('footer')
+<footer class="">
+    <div class="container-fluid bg-dark text-white p-6">
+        <div class="row">
+            <div class="col-md-4">
+                <h5 class="mb-sm text-white">LOKASI</h5>
+                <iframe width="100%" height="305" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="{{ $identitas->maps }}"></iframe>
+            </div>
+            <div class="col-md-4">
+                <h5 class="mb-sm text-white">FANSPAGE</h5>
+                <div class="fb-page" data-href="https://www.facebook.com/dppkbkarawang/" data-tabs="timeline" data-width="300" data-height="300" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                    <blockquote cite="https://www.facebook.com/dppkbkarawang/" class="fb-xfbml-parse-ignore">
+                        <a href="https://www.facebook.com/dppkbkarawang/">DPPKB Karawang</a>
+                    </blockquote>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h5 class="mb-sm text-white">CONTACT US</h5>
+                <h2 class="mb-xl text-white"><strong>{{ $identitas->no_telp }}</strong></h2>
+                <div class="text-white lead">
+                    <p class="text-bold">
+                    {!! $alamat->alamat !!}
+                    </p>
+                </div>
+                <ul class="social-icons mt-xl d-flex">
+                    <a class="sc-1 mr-4" href="#"><i class="fab fa-facebook fa-2x"></i></a>
+                    <a class="sc-2 mr-4" href="#"><i class="fab fa-twitter fa-2x"></i></a>
+                    <a class="sc-3 mr-4" href="#"><i class="fab fa-instagram fa-2x"></i></a>
+                    <a class="sc-4 mr-4" href="#"><i class="fab fa-youtube fa-2x"></i></a>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid text-white bg-gray-dark">
+        <div class="row">
+            <div class="col-md-11 p-4">
+                <p class="text-white d-flex justify-content-start ml-6">© {{ date('Y') }} Powered by Lokomedia.web.id.</p>
+            </div>
+        </div>
+    </div>
+</footer>
 
 <body>
     <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
