@@ -22,7 +22,7 @@
                             <tr>
                                 <th style="padding: 5px;">Link</th>
                                 <td style="padding: 5px;">
-                                    <input type="text" class="form-control" id="url" name="url" placeholder="Masukkan Link" required>
+                                    <input type="text" class="form-control" id="link" name="link" placeholder="Masukkan Link" required>
                                 </td>
                             </tr>
                             <tr>

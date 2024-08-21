@@ -12,5 +12,5 @@ class Manajemenmodul extends Model
     public $timestamps = false;
     protected $primaryKey = 'id_modul';
     protected $table = 'modul';
-    protected $fillable = ['id_modul', 'nama_modul', 'username', 'link', 'publish', 'status', 'aktif', 'urutan', 'link_seo']; // Kolom yang dapat diisi
+    protected $fillable = ['id_modul', 'nama_modul', 'username', 'link', 'publish', 'status', 'aktif', 'urutan', 'static_content', 'gambar', 'link_seo']; // Kolom yang dapat diisi
 }

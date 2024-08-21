@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Manajemenmodul;
+use Illuminate\Container\Attributes\Log;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
@@ -47,20 +48,26 @@ class ManajemenmodulController extends Controller
     public function store(Request $request):RedirectResponse
     {
         //
-        $validated = $request->validate([
-            'nama_modul' => 'required|string|max:255',
-            'url' => 'required|string|max:255',
-            'publish' => 'required|in:Y,N',
-            'aktif' => 'required|in:Y,N',
-            'status' => 'required|in:user,admin',
-        ]);
+        $nama_modul = $request->nama_modul;
+        $link = $request->link;
+        $publish = $request->publish == 'Ya' ? 'Y' : 'N';
+        $aktif = $request->aktif == 'Ya' ? 'Y' : 'N';
+        $status = $request->status == 'admin' ? 'admin' : 'user';
+
+        $username = $request->username ?: 'admin';
+        $urutan = $request->urutan ?: 0;
 
         Manajemenmodul::create([
-            'link_seo' => Str::slug($validated['nama_modul']),
-            'nama_modul' => $validated['nama_modul'],
-            'publish' => $validated['publish'],
-            'aktif' => $validated['aktif'],
-            'status' => $validated['status']
+            'nama_modul' => $nama_modul,
+            'link' => $link,
+            'publish' => $publish,
+            'aktif' => $aktif,
+            'status' => $status,
+            'username' => $username,
+            'urutan' => $urutan,
+            'static_content' => '',
+            'gambar' => '',
+            'link_seo' => ''
         ]);
 
         session()->flash("pesan", "MenuWebsite berhasil Ditambah");
@@ -83,7 +90,7 @@ class ManajemenmodulController extends Controller
         //
         $manajemenmodul = Manajemenmodul::findOrFail($id);
 
-        return view('administrator.menuwebsite.edit', compact('menuwebs', 'menu'));
+        return view('administrator.manajemenmodul.edit', compact('manajemenmodul'));
     }
 
     /**
@@ -94,23 +101,28 @@ class ManajemenmodulController extends Controller
         //
         $manajemenmodul = Manajemenmodul::findOrFail($id);
 
-        $validated = $request->validate([
-            'nama_modul' => 'required|string|max:255'
-        ]);
+        $nama_modul = $request->nama_modul;
+        $link = $request->link;
+        $publish = $request->publish == 'Y' ? 'Y' : 'N';
+        $aktif = $request->aktif == 'Y' ? 'Y' : 'N';
+        $status = $request->status == 'admin' ? 'admin' : 'user';
 
-        $url = $request->url;
-        $publish = $request->publish;
-        $aktif = $request->aktif;
-        $status = $request->status;
+
+        $username = $request->username ?: 'admin';
+        $urutan = $request->urutan ?: 0;
 
         $updateData = [
-            'nama_modul' => $validated['nama_modul'],
-            'url' => $url,
+            'nama_modul' => $nama_modul,
+            'link' => $link,
             'publish' => $publish,
             'aktif' => $publish,
             'aktif' => $aktif,
             'status' => $status,
-            'link_seo' => Str::slug($validated['nama_modul']),
+            'urutan' => $urutan,
+            'username' => $username,
+            'static_content' => '',
+            'gambar' => '',
+            'link_seo' => ''
         ];
 
         $manajemenmodul->update($updateData);
