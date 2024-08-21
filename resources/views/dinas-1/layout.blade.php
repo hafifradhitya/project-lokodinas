@@ -54,20 +54,20 @@
                 </div>
             </div>
         </div>
-        <div class="header-container header-nav header-nav-center header-nav-bar header-nav-bar-">
+        <div class="header-container header-nav header-nav-center header-nav-bar header-nav-bar-dark bg-dark">
             <button class="btn header-btn-collapse-nav" data-toggle="collapse" data-target=".header-nav-main">
                 <i class="fa fa-bars"></i>
             </button>
-            <div class="header-nav-main header-nav-main-light header-nav-main-effect-1 header-nav-main-sub-effect-1 fixed-top collapse" style="padding-top:3px;">
-                <nav>
-                    <ul class="nav nav-pills" id="mainNav">
+            <div class="header-nav-main header-nav-main-dark header-nav-main-effect-1 header-nav-main-sub-effect-1 collapse" style="padding-top:3px;">
+                <nav class="bg-dark">
+                    <ul class="nav nav-pills justify-content-center" id="mainNav">
                         <li class="">
-                            <a href="{{ url('/') }}">
+                            <a href="{{ url('/') }}" class="text-white">
                                 <i class="fa fa-home" style="font-size:25px;"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('hubungi/') }}">
+                            <a href="{{ url('hubungi/') }}" class="text-white">
                                 Hubungi Kami
                             </a>
                         </li>
@@ -92,38 +92,11 @@
 </header>
 
 <div class="container-fluid">
-    @yiled('content')
+    
 </div>
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
 @yield('footer')
 <footer class="">
     <div class="container-fluid bg-dark text-white p-6">
@@ -143,10 +116,8 @@
             <div class="col-md-4">
                 <h5 class="mb-sm text-white">CONTACT US</h5>
                 <h2 class="mb-xl text-white"><strong>{{ $identitas->no_telp }}</strong></h2>
-                <div class="text-white lead">
-                    <p class="text-bold">
+                <div class="text-white">
                     {!! $alamat->alamat !!}
-                    </p>
                 </div>
                 <ul class="social-icons mt-xl d-flex">
                     <a class="sc-1 mr-4" href="#"><i class="fab fa-facebook fa-2x"></i></a>
