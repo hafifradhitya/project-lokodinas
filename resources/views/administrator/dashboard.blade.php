@@ -167,7 +167,7 @@
                             </a>
                         </div>
                         <div class="col-3 mb-3">
-                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
+                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark" href="{{ url('administrator/agenda') }}">
                                 <i class="fa fa-calendar-minus fa-2x mb-1 mx-auto"></i>
                                 <span class="small">Agenda</span>
                             </a>
