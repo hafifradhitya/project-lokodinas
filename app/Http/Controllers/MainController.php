@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alamatkontak;
+use App\Models\Identitaswebsite;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -11,7 +13,9 @@ class MainController extends Controller
      */
     public function index()
     {
-        //
+        $identitas = Identitaswebsite::first(); 
+        $alamat = Alamatkontak::first();
+        return view('dinas-1.layout', compact('identitas', 'alamat'));
     }
 
     /**

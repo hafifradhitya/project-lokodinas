@@ -30,9 +30,9 @@ use App\Http\Controllers\VideoController;
 use App\Http\Controllers\YmController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('auth.register');
-});
+// Route::get('/', function () {
+//     return view('auth.register');
+// });
 
 Route::get('/dashboard', function () {
     return view('administrator.dashboard');
@@ -85,5 +85,7 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
 Route::prefix('dinas-1')->name('dinas-1.')->group(function () {
     Route::resource('dashboard',MainController::class );
 });
+
+Route::get('/', [MainController::class, 'index']);
 
 Route::get('testing', [TestingController::class, 'test']);
