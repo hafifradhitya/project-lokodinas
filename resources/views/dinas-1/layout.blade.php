@@ -25,7 +25,7 @@
     <meta property="og:image" content="{{ asset('asset/foto_berita/' . $rows->gambar) }}" />
     <meta property="og:description" content="{{ $description }}" />
     @endif
-    <link rel="icon" href="{{ asset('images/favpertmin.png')}}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('foto_identitas/' . $identitas->favicon)}}" type="image/x-icon">
     <link rel="stylesheet" href="{{ url('assets/vendor/nucleo/css/nucleo.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ url('assets/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ url('assets/css/argon.css') }}" type="text/css">
@@ -38,6 +38,72 @@
     <style>
         .bg-gray {
             background-color: #343a40;
+        }
+
+        /* CSS untuk dropdown menu */
+        .dropdown-menu {
+            display: none;
+            /* Sembunyikan dropdown secara default */
+            position: absolute;
+            /* Posisi absolut untuk dropdown */
+            left: 0;
+            /* Posisi kiri */
+            top: 100%;
+            /* Posisi di bawah elemen induk */
+            width: 100%;
+            /* Lebar sama dengan elemen induk */
+            background-color: #fff;
+            /* Warna latar belakang */
+            border: 1px solid #ccc;
+            /* Border */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            /* Bayangan */
+            z-index: 1000;
+            /* Pastikan dropdown di atas elemen lain */
+        }
+
+        /* Menampilkan dropdown saat hover */
+        .position-relative:hover .dropdown-menu {
+            display: block;
+            /* Tampilkan dropdown saat hover */
+        }
+
+        /* Gaya untuk item dropdown */
+        .dropdown-item {
+            padding: 10px 15px;
+            /* Padding untuk item */
+            color: #333;
+            /* Warna teks */
+            text-decoration: none;
+            /* Hapus garis bawah */
+            display: block;
+            /* Tampilkan sebagai blok */
+        }
+
+        /* Gaya saat item dropdown dihover */
+        .dropdown-item:hover {
+            background-color: #f8f9fa;
+            /* Warna latar belakang saat hover */
+            color: #007bff;
+            /* Warna teks saat hover */
+        }
+
+        /* Gaya untuk link menu utama */
+        .dropdown-toggle {
+            color: #fff;
+            /* Warna teks menu utama */
+            padding: 15px;
+            /* Padding untuk menu utama */
+            text-decoration: none;
+            /* Hapus garis bawah */
+        }
+
+        /* Gaya saat menu utama dihover */
+        .dropdown-toggle:hover {
+            background-color: #007bff;
+            /* Warna latar belakang saat hover */
+            color: #fff;
+            /* Warna teks saat hover */
         }
     </style>
 </head>
@@ -54,7 +120,7 @@
                 </div>
             </div>
         </div>
-        <div class="header-container header-nav header-nav-center header-nav-bar header-nav-bar-dark bg-dark">
+        <div class="header-container header-nav header-nav-center header-nav-bar header-nav-bar-dark bg-dark position:">
             <button class="btn header-btn-collapse-nav" data-toggle="collapse" data-target=".header-nav-main">
                 <i class="fa fa-bars"></i>
             </button>
@@ -66,12 +132,26 @@
                                 <i class="fa fa-home" style="font-size:25px;"></i>
                             </a>
                         </li>
+                        @foreach($menus as $menu)
+                        <li class="position-relative">
+                            <a class="dropdown-toggle" href="#" id="navbarDropdown{{ $menu->id_menu }}" role="button" data-bs-toggle="dropdown" aria-expanded="false" onmouseover="showDropdown('{{ $menu->id_menu }}')" onmouseout="hideDropdown('{{ $menu->id_menu }}')">
+                                {{ $menu->nama_menu }}
+                            </a>
+                            @if($menu->children->count() > 0)
+                            <ul class="dropdown-menu" id="dropdown{{ $menu->id_menu }}" aria-labelledby="navbarDropdown{{ $menu->id_menu }}" style="display: none; position: absolute; left: 0; ">
+                                @foreach($menu->children as $child)
+                                <li><a class="dropdown-item" href="#">{{ $child->nama_menu }}</a></li>
+                                @endforeach
+                            </ul>
+                            @endif
+                        </li>
+                        @endforeach
                         <li>
                             <a href="{{ url('hubungi/') }}" class="text-white">
                                 Hubungi Kami
                             </a>
                         </li>
-                        <li class="hidden-xs hidden-sm" style="float:right;padding:10px 13px;">
+                        <li class="hidden-xs hidden-sm" style="padding:10px 13px;">
                             <form method="POST" action="{{ url('berita/index/') }}">
                                 @csrf
                                 <div class="input-group" style="position:absolute; width:150px; right:50px;">
@@ -92,7 +172,7 @@
 </header>
 
 <div class="container-fluid">
-    
+
 </div>
 <br>
 <br>
@@ -138,6 +218,15 @@
 </footer>
 
 <body>
+    <script>
+        function showDropdown(id) {
+            document.getElementById('dropdown' + id).style.display = 'block';
+        }
+
+        function hideDropdown(id) {
+            document.getElementById('dropdown' + id).style.display = 'none';
+        }
+    </script>
     <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/43.0.0/ckeditor5.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>

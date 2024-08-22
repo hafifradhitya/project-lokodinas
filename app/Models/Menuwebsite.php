@@ -18,4 +18,8 @@ class Menuwebsite extends Model
     {
         return $this->belongsTo(Menuwebsite::class, 'id_parent');
     }
+    public function children()
+    {
+        return $this->hasMany(Menuwebsite::class, 'id_parent');
+    }
 }

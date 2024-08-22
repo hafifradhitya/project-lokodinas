@@ -23,13 +23,13 @@ class IdentitaswebsiteController extends Controller
     /**
      * Update identitas website.
      */
-    public function update(Request $request): RedirectResponse
+    public function update(Request $request)
     {
         $validated = $request->validate([
             "nama_website" => 'required|string|max:255',
             "email" => 'required|email',
-            "url" => 'required|url',
-            "facebook" => 'required|url',
+            "domain" => 'required|url',
+            "sosial_media" => 'required|url',
             "rekening" => 'required',
             "no_telp" => 'required',
             "meta_deskripsi" => 'required',
@@ -38,23 +38,47 @@ class IdentitaswebsiteController extends Controller
             "favicon" => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
-        $identitaswebsite = Identitaswebsite::first();
+        $identitaswebsite = Identitaswebsite::first(); // Mengambil identitas pertama
+
+        $faviconName = $identitaswebsite->favicon; // Simpan nama favicon lama
 
         if ($request->hasFile('favicon')) {
             $favicon = $request->file('favicon');
-            $faviconName = $request->nama_website . "_" . Str::random(25) . "." . $favicon->getClientOriginalExtension();
-            $favicon->move('./foto_identitas', $faviconName);
-            
+
+            // Generate nama file baru dengan memastikan tidak melebihi batas karakter
+            $baseFilename = $request->nama_website . "_" . Str::random(25);
+            $extension = $favicon->getClientOriginalExtension();
+
+            // Batasi panjang nama file dasar agar total panjang tidak melebihi batas
+            $maxFilenameLength = 50 - strlen($extension) - 1; // -1 untuk underscore
+            $faviconName = substr($baseFilename, 0, $maxFilenameLength) . '.' . $extension;
+
+            // Pindahkan file ke direktori tujuan
+            $favicon->move(public_path('foto_identitas'), $faviconName);
+
             // Hapus favicon lama jika ada
-            if ($identitaswebsite->favicon) {
-                Storage::delete('./foto_identitas/' . $identitaswebsite->favicon);
+            if ($identitaswebsite->favicon && Storage::exists('foto_identitas/' . $identitaswebsite->favicon)) {
+                Storage::delete('foto_identitas/' . $identitaswebsite->favicon);
             }
-            
-            $identitaswebsite->favicon = $faviconName;
         }
 
-        $identitaswebsite->update($validated);
+        // Update nama favicon di database
+        $identitaswebsite->favicon = $faviconName;
 
+        $identitaswebsite->update([
+            "nama_website" => $validated['nama_website'],
+            "email" => $validated['email'],
+            "url" => $validated['domain'],
+            "facebook" => $validated['sosial_media'],
+            "rekening" => $validated['rekening'],
+            "no_telp" => $validated['no_telp'],
+            "meta_deskripsi" => $validated['meta_deskripsi'],
+            "meta_keyword" => $validated['meta_keyword'],
+            "maps" => $validated['maps'],
+            "favicon" => $faviconName
+        ]);
+
+        session()->flash("pesan", "identitas berhasil Diperbarui");
         return redirect()->route("administrator.identitaswebsite.edit")->with('success', 'Data berhasil diperbarui');
     }
 }

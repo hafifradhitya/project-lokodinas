@@ -13,39 +13,39 @@
         <tbody>
           <tr>
             <th style="width: 100px;">Nama Website</th>
-            <td style="padding-left: 8px;"><input type="text" class="form-control form-control-sm" name="nama_website" value="{{ $identitaswebsite->first()->nama_website ?? '' }}"></td>
+            <td style="padding-left: 8px;"><input type="text" class="form-control form-control-sm" name="nama_website" value="{{ $identitaswebsite->nama_website }}"></td>
           </tr>
           <tr>
             <th>Email</th>
-            <td style="padding-left: 8px;"><input type="email" class="form-control form-control-sm" name="email" value="{{ $identitaswebsite->first()->email ?? '' }}"></td>
+            <td style="padding-left: 8px;"><input type="email" class="form-control form-control-sm" name="email" value="{{ $identitaswebsite->email }}"></td>
           </tr>
           <tr>
             <th>Domain</th>
-            <td style="padding-left: 8px;"><input type="url" class="form-control form-control-sm" name="domain" value="{{ $identitaswebsite->first()->url ?? '' }}"></td>
+            <td style="padding-left: 8px;"><input type="url" class="form-control form-control-sm" name="domain" value="{{ $identitaswebsite->url }}"></td>
           </tr>
           <tr>
             <th>Sosial Media</th>
-            <td style="padding-left: 8px;"><input type="url" class="form-control form-control-sm" name="sosial_media" value="{{ $identitaswebsite->first()->facebook ?? '' }}"></td>
+            <td style="padding-left: 8px;"><input type="url" class="form-control form-control-sm" name="sosial_media" value="{{ $identitaswebsite->facebook }}"></td>
           </tr>
           <tr>
             <th>No Rekening</th>
-            <td style="padding-left: 8px;"><input type="text" class="form-control form-control-sm" name="rekening" value="{{ $identitaswebsite->first()->rekening ?? '' }}"></td>
+            <td style="padding-left: 8px;"><input type="text" class="form-control form-control-sm" name="rekening" value="{{ $identitaswebsite->rekening }}"></td>
           </tr>
           <tr>
             <th>No Telpon</th>
-            <td style="padding-left: 8px;"><input type="tel" class="form-control form-control-sm" name="no_telp" value="{{ $identitaswebsite->first()->no_telp ?? '' }}"></td>
+            <td style="padding-left: 8px;"><input type="tel" class="form-control form-control-sm" name="no_telp" value="{{ $identitaswebsite->no_telp }}"></td>
           </tr>
           <tr>
             <th>Meta Deskripsi</th>
-            <td style="padding-left: 8px;"><input type="text" class="form-control form-control-sm" name="meta_deskripsi" value="{{ $identitaswebsite->first()->meta_deskripsi ?? '' }}"></td>
+            <td style="padding-left: 8px;"><input type="text" class="form-control form-control-sm" name="meta_deskripsi" value="{{ $identitaswebsite->meta_deskripsi }}"></td>
           </tr>
           <tr>
             <th>Meta Keyword</th>
-            <td style="padding-left: 8px;"><input type="text" class="form-control form-control-sm" name="meta_keyword" value="{{ $identitaswebsite->first()->meta_keyword ?? '' }}"></td>
+            <td style="padding-left: 8px;"><input type="text" class="form-control form-control-sm" name="meta_keyword" value="{{ $identitaswebsite->meta_keyword }}"></td>
           </tr>
           <tr>
             <th>Google Maps</th>
-            <td style="padding-left: 8px;"><textarea class="form-control form-control-sm" name="maps" rows="3">{{ $identitaswebsite->first()->maps ?? '' }}</textarea></td>
+            <td style="padding-left: 8px;"><textarea class="form-control form-control-sm" name="maps" rows="3">{{ $identitaswebsite->maps }}</textarea></td>
           </tr>
           <tr>
             <th>Favicon</th>
@@ -53,11 +53,7 @@
               <input type='file' class='form-control form-control-md' name='favicon'>
               <hr style='margin:5px'>
               Favicon Aktif Saat ini :
-              @if($identitaswebsite->first() && $identitaswebsite->first()->favicon)
-                <img style='width:32px; height:32px' src="{{ url('images/'.$identitaswebsite->first()->favicon) }}">
-              @else
-                Tidak ada favicon
-              @endif
+                <img style='width:32px; height:32px' src="{{ url('foto_identitas/'.$identitaswebsite->favicon) }}">
             </td>
           </tr>
         </tbody>

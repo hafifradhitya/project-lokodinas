@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Alamatkontak;
 use App\Models\Identitaswebsite;
 use App\Models\Logo;
+use App\Models\Menuwebsite;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -17,7 +18,8 @@ class MainController extends Controller
         $identitas = Identitaswebsite::first(); 
         $alamat = Alamatkontak::first();
         $logo = Logo::orderBy('id_logo', 'DESC')->first();
-        return view('dinas-1.layout', compact('identitas', 'alamat','logo'));
+        $menus = Menuwebsite::where('id_parent', 0)->with('children')->get();
+        return view('dinas-1.layout', compact('identitas', 'alamat','logo','menus'));
     }
 
     /**
@@ -25,7 +27,11 @@ class MainController extends Controller
      */
     public function create()
     {
-        //
+        $identitas = Identitaswebsite::first(); 
+        $alamat = Alamatkontak::first();
+        $logo = Logo::orderBy('id_logo', 'DESC')->first();
+        $menus = Menuwebsite::where('id_parent', 0)->with('children')->get();
+        return view('dinas-2.layout', compact('identitas', 'alamat','logo','menus'));
     }
 
     /**
