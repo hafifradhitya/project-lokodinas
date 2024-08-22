@@ -4,7 +4,7 @@
     <div class="card shadow">
         <div class="card-header">
             <h3 class="mb-0">Edit Berita</h3>
-        </div>
+        </div>  
         <div class="card-body">
             <form action="{{ route('administrator.berita.update', $berita->id_berita) }}" method="POST" enctype="multipart/form-data">
                 @csrf

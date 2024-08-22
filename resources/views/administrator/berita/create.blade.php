@@ -4,7 +4,7 @@
 <div class="card shadow">
     <div class="card-header">
         <h3 class="mb-0">Tambah Berita</h3>
-    </div>
+    </div>  
     <div class="card-body">
         <form action="{{ route('administrator.berita.store') }}" method="POST" enctype="multipart/form-data">
             @csrf

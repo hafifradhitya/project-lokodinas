@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model; 
 
 class Berita extends Model
 {
@@ -17,8 +17,8 @@ class Berita extends Model
     public function scopeLatest($query)
     {
         return $query->orderBy('tanggal', 'desc');
-    }
-
+    }  
+  
     public function kategori()
     {
         return $this->belongsTo(Kategori::class, 'id_kategori');
@@ -27,5 +27,10 @@ class Berita extends Model
     public function tag()
     {
         return $this->belongsTo(Tag::class, 'id_tag', 'id_tag');
+    }  
+
+    public function komentarberita()
+    {
+        return $this->belongsTo(Komentarberita::class, 'id_komentar');
     }
 }

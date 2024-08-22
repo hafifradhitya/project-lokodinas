@@ -21,7 +21,7 @@ class VideoController extends Controller
      */
     public function index(Request $request):View
     {
-        //
+        //    
         $search = $request->search;
         if(!empty($search)) {
             $videos = Video::with('playlist')
@@ -29,7 +29,7 @@ class VideoController extends Controller
             ->paginate(10);
         } else {
             $videos = Video::with('playlist')->orderBy('tanggal', 'desc')->paginate(10);
-        }
+        }  
 
         return view('administrator.video.index', compact(['videos']));
     }

@@ -36,7 +36,7 @@
             </thead>
             <tbody>
               @foreach ($videos as $index => $vid)
-                  <tr>
+                  <tr>  
                       {{-- <td>{{ $no }}</td> --}}
                         <td>{{ $index + $videos->firstItem() }}</td>
                         <td>{{ $vid->jdl_video }}</td>
@@ -54,7 +54,7 @@
                                 </button>
                             </form>
                         </td>
-                  </tr>
+                  </tr>  
               @endforeach
             </tbody>
           </table>

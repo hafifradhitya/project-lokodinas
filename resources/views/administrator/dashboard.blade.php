@@ -9,7 +9,7 @@
             <div class="card bg-gradient-primary border-0">
                 <div class="card-body">
                     <h5 class="text-white">BERITA</h5>
-                    <h2 class="text-white">64</h2>
+                    <h2 class="text-white">{{ $berita['total_berita'] }}</h2>
                 </div>
             </div>
         </div>
@@ -17,7 +17,7 @@
             <div class="card bg-gradient-success border-0">
                 <div class="card-body">
                     <h5 class="text-white">HALAMAN</h5>
-                    <h2 class="text-white">5</h2>
+                    <h2 class="text-white">{{ $halamanbaru['total_halamanbaru'] }}</h2>
                 </div>
             </div>
         </div>
@@ -25,7 +25,7 @@
             <div class="card bg-gradient-warning border-0">
                 <div class="card-body">
                     <h5 class="text-white">AGENDA</h5>
-                    <h2 class="text-white">3</h2>
+                    <h2 class="text-white">{{ $agenda['total_agenda'] }}</h2>
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
             <div class="card bg-gradient-danger border-0">
                 <div class="card-body">
                     <h5 class="text-white">USERS</h5>
-                    <h2 class="text-white">1</h2>
+                    <h2 class="text-white">{{ $users['total_users'] }}</h2>
                 </div>
             </div>
         </div>
@@ -83,7 +83,7 @@
                             </a>
                         </div>
                         <div class="col-3 mb-3">
-                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
+                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark" href="{{ url('administrator/komentarberita') }}">
                                 <i class="fa fa-comments fa-2x mb-1 mx-auto"></i>
                                 <span class="small">Komen. Berita</span>
                             </a>
@@ -101,7 +101,7 @@
                             </a>
                         </div>
                         <div class="col-3 mb-3">
-                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
+                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark" href="{{ url('administrator/gallery') }}">
                                 <i class="fa fa-camera fa-2x mb-1 mx-auto"></i>
                                 <span class="small">Gallery</span>
                             </a>
@@ -125,7 +125,7 @@
                             </a>
                         </div>
                         <div class="col-3 mb-3">
-                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark">
+                            <a class="btn btn-secondary d-flex flex-column align-items-center justify-content-center h-100 p-2 w-100 border-0 hover-border-dark" href="{{ url('administrator/komentarvideo') }}">
                                 <i class="fa fa-comments fa-2x mb-1 mx-auto"></i>
                                 <span class="small">Komen. Video</span>
                             </a>

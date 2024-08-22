@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Berita;
-use App\Models\Tag;
+use App\Models\Tag;  
 
 class BeritaController extends Controller
 {
@@ -76,7 +76,7 @@ class BeritaController extends Controller
             $tag_seo = $request->tag;
             $tag=implode(',',$tag_seo);
         }else{
-            $tag = '';
+            $tag = '';  
         }
 
         Berita::create([

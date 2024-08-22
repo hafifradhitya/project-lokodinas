@@ -8,12 +8,15 @@ use App\Http\Controllers\BannersliderController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DownloadareaController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HalamanbaruController;
 use App\Http\Controllers\IdentitaswebsiteController;
 use App\Http\Controllers\IklanatasController;
 use App\Http\Controllers\IklansidebarController;
 use App\Http\Controllers\JejakpendapatController;
 use App\Http\Controllers\KategoriberitaController;
+use App\Http\Controllers\KomentarberitaController;
+use App\Http\Controllers\KomentarvideoController;
 use App\Http\Controllers\LogowebsiteController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ManajemenmodulController;
@@ -28,19 +31,29 @@ use App\Http\Controllers\TagvideoController;
 use App\Http\Controllers\TestingController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\YmController;
+use App\Models\Agenda;
+use App\Models\Berita;
+use App\Models\Halamanbaru;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('auth.register');
-// });
+Route::get('/register', function () {
+    return view('auth.register');
+});
 
 Route::get('/dashboard', function () {
-    return view('administrator.dashboard');
+
+    $berita['total_berita'] = Berita::count();
+    $halamanbaru['total_halamanbaru'] = Halamanbaru::count();
+    $agenda['total_agenda'] = Agenda::count();
+    $users['total_users'] = User::count();
+
+    return view('administrator.dashboard', compact('berita', 'halamanbaru', 'agenda', 'users'));
 })->middleware(['auth', 'verified'])->name('dashboard'); // Mengarahkan ke halaman register Laravel Breeze
 
-// Route::get('/login', function () {
-//     return view('auth.login'); // Mengarahkan ke halaman login Laravel Breeze
-// })->name('login');
+Route::get('/login', function () {
+    return view('auth.login'); // Mengarahkan ke halaman login Laravel Breeze
+})->name('login');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -53,7 +66,6 @@ require __DIR__.'/auth.php';
 // Route::get('administrator/dashboard', [DashboardController::class, "dashboard"]);
 
 Route::prefix('administrator')->name('administrator.')->group(function () {
-    Route::resource('dasboard', DashboardController::class);
     Route::resource('halamanbaru', HalamanbaruController::class);
     Route::get('identitaswebsite', [IdentitaswebsiteController::class, 'edit'])->name('identitaswebsite.edit');
     Route::put('identitaswebsite', [IdentitaswebsiteController::class, 'update'])->name('identitaswebsite.update');
@@ -79,6 +91,9 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
     Route::resource('album', AlbumController::class);
     Route::resource('iklanatas', IklanatasController::class);
     Route::resource('sensorkomentar', SensorkomentarController::class);
+    Route::resource('komentarberita', KomentarberitaController::class);
+    Route::resource('komentarvideo', KomentarvideoController::class);
+    Route::resource('gallery', GalleryController::class);
     Route::resource('ym', YmController::class);
 });
 

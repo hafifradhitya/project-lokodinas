@@ -26,4 +26,9 @@ class Video extends Model
     {
         return $this->belongsTo(Tagvideo::class, 'id_tag', 'id_tag');
     }
+
+    public function komentarvideo()
+    {
+        return $this->belongsTo(Komentarvideo::class, 'id_komentar');
+    }
 }
