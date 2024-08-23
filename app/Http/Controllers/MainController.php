@@ -15,11 +15,14 @@ class MainController extends Controller
      */
     public function index()
     {
-        $identitas = Identitaswebsite::first(); 
+        $identitas = Identitaswebsite::first();
         $alamat = Alamatkontak::first();
         $logo = Logo::orderBy('id_logo', 'DESC')->first();
-        $menus = Menuwebsite::where('id_parent', 0)->with('children')->get();
-        return view('dinas-1.layout', compact('identitas', 'alamat','logo','menus'));
+        $menus = Menuwebsite::where('id_parent', 0)
+            ->with('children.children') // Menyertakan children hingga 2 level
+            ->orderBy('position', 'asc')
+            ->get();
+        return view('dinas-1.layout', compact('identitas', 'alamat', 'logo', 'menus'));
     }
 
     /**
@@ -27,11 +30,11 @@ class MainController extends Controller
      */
     public function create()
     {
-        $identitas = Identitaswebsite::first(); 
+        $identitas = Identitaswebsite::first();
         $alamat = Alamatkontak::first();
         $logo = Logo::orderBy('id_logo', 'DESC')->first();
         $menus = Menuwebsite::where('id_parent', 0)->with('children')->get();
-        return view('dinas-2.layout', compact('identitas', 'alamat','logo','menus'));
+        return view('dinas-2.layout', compact('identitas', 'alamat', 'logo', 'menus'));
     }
 
     /**
