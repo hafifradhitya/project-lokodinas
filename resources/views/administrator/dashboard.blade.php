@@ -1,39 +1,68 @@
 @extends('administrator.layout')
 
-@section('content')
+@section('submenu')
 
+<div class="header-body">
+    <div class="row align-items-center py-2">
+        <div class="col-lg-6 col-7">
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                <ol class="breadcrumb breadcrumb-links">
+                    <li class="breadcrumb-item"><a href="#"><i class="ni ni-shop text-primary"></i></a>
+                    </li>
+                    <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+
+@endsection
+
+@section('content')
 <div class="container">
     <h1 class="mb-4">Dashboard</h1>
     <div class="row">
         <div class="col-xl-3 col-md-6">
             <div class="card bg-gradient-primary border-0">
-                <div class="card-body">
-                    <h5 class="text-white">BERITA</h5>
-                    <h2 class="text-white">{{ $berita['total_berita'] }}</h2>
+                <div class="card-body d-flex align-items-center">
+                    <i class="fa fa-newspaper fa-3x text-white mr-3"></i>
+                    <div>
+                        <h5 class="text-white mb-0">BERITA</h5>
+                        <h2 class="text-white mb-0">{{ $berita['total_berita'] }}</h2>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-xl-3 col-md-6">
             <div class="card bg-gradient-success border-0">
-                <div class="card-body">
-                    <h5 class="text-white">HALAMAN</h5>
-                    <h2 class="text-white">{{ $halamanbaru['total_halamanbaru'] }}</h2>
+                <div class="card-body d-flex align-items-center">
+                    <i class="fa fa-file-alt fa-3x text-white mr-3"></i>
+                    <div>
+                        <h5 class="text-white mb-0">HALAMAN</h5>
+                        <h2 class="text-white mb-0">{{ $halamanbaru['total_halamanbaru'] }}</h2>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-xl-3 col-md-6">
             <div class="card bg-gradient-warning border-0">
-                <div class="card-body">
-                    <h5 class="text-white">AGENDA</h5>
-                    <h2 class="text-white">{{ $agenda['total_agenda'] }}</h2>
+                <div class="card-body d-flex align-items-center">
+                    <i class="fa fa-calendar-alt fa-3x text-white mr-3"></i>
+                    <div>
+                        <h5 class="text-white mb-0">AGENDA</h5>
+                        <h2 class="text-white mb-0">{{ $agenda['total_agenda'] }}</h2>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-xl-3 col-md-6">
             <div class="card bg-gradient-danger border-0">
-                <div class="card-body">
-                    <h5 class="text-white">USERS</h5>
-                    <h2 class="text-white">{{ $users['total_users'] }}</h2>
+                <div class="card-body d-flex align-items-center">
+                    <i class="fa fa-users fa-3x text-white mr-3"></i>
+                    <div>
+                        <h5 class="text-white mb-0">USERS</h5>
+                        <h2 class="text-white mb-0">{{ $users['total_users'] }}</h2>
+                    </div>
                 </div>
             </div>
         </div>

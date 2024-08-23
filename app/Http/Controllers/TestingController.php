@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Berita;
+use App\Models\Identitaswebsite;
 use App\Models\Kategori;
 use App\Models\Tag;
 use Illuminate\View\View;
@@ -44,4 +45,12 @@ class TestingController extends Controller
 		// $this->model_app->update('berita', $data, $where);
 		// redirect('administrator/listberita');
 	}
+
+
+    // public function layout()
+    // {
+
+    //     $identitas = Identitaswebsite::first();
+    //     return view('administrator/layout', compact('identitas'));
+    // }
 }

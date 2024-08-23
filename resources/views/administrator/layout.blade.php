@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Welcome Administrator-</title>
-  <link rel="icon" href="{{ asset('images/favpertmin.png')}}" type="image/x-icon">
+  <link rel="icon" href="{{ asset('foto_identitas/Website DPPKB Karawang 2_JUgtyyIC4x6eZLRfKWazW.png')}}" type="image/x-icon">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <link rel="stylesheet" href="{{ url('assets/vendor/nucleo/css/nucleo.css') }}" type="text/css">
   <link rel="stylesheet" href="{{ url('assets/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}" type="text/css">
@@ -469,21 +469,7 @@
         </nav>
         <div class="header pb-6">
             <div class="container-fluid">
-                <div class="header-body">
-                    <div class="row align-items-center py-4">
-                        <div class="col-lg-6 col-7">
-                            <h6 class="h2 d-inline-block mb-0">Alternative</h6>
-                            <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
-                                <ol class="breadcrumb breadcrumb-links">
-                                    <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a>
-                                    </li>
-                                    <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Alternative</li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
+                @yield('submenu')
             </div>
         </div>
         <div class="container-fluid mt--6">

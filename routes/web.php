@@ -103,4 +103,4 @@ Route::prefix('dinas-1')->name('dinas-1.')->group(function () {
 
 Route::get('/', [MainController::class, 'index']);
 
-Route::get('testing', [TestingController::class, 'test']);
+// Route::get('administrator/layout', [TestingController::class, 'layout']);
